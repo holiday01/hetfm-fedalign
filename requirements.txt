@@ -1,0 +1,6 @@
+# Tested versions (Python 3.11.9)
+torch==2.10.0
+numpy==1.26.4
+scipy==1.13.1
+matplotlib==3.10.8
+scikit-learn==1.6.1
