@@ -4,7 +4,7 @@ table has a single provenance.  Results are cached one JSON per (task, seed)
 under results/r2_batch/; nothing in results/*.json from the submission is
 touched or overwritten (run_hetfm.run is deliberately not used).
 
-  cd <repo-root>
+  cd /home/holiday01/fl_wsi
   python -m hetfm.run_r2_batch --worker 0 --nworkers 3      # one shard
   python -m hetfm.run_r2_batch --list                       # task inventory
   python -m hetfm.run_r2_batch --summarize                  # aggregate
@@ -38,6 +38,7 @@ from hetfm.run_hetfm import probe_fm_dims                      # noqa: E402
 RESULTS = Path(__file__).parent / "results"
 CACHE = RESULTS / "r2_batch"
 SEEDS = list(range(62, 92))
+R450_SEEDS = [62, 63, 64, 65, 66]
 ROUNDS = 150
 SCHEMES = ["balanced", "stratified", "cancer_correlated", "adversarial"]
 HEAD = dict(k=256, depth="linear", tie="fm", lam_proto=1.0, lam_con=1.0)
@@ -138,6 +139,42 @@ def t_baselines(scheme, seed, rounds):
     return out
 
 
+def t_fpkd_faithful(scheme, seed, rounds):
+    """Faithful FedProtoKD (variant A: per-site projector and head, nothing
+    aggregated) at the headline seeds; returns the per-site-routed artefacts."""
+    rsp, rgt, asn = _route(scheme, seed)
+    t0 = time.time()
+    r = fpkd(rsp, rgt, asn, _fmd(), rounds=rounds, seed=seed, log_every=rounds,
+             aggregate_projector=False, k=HEAD["k"], depth=HEAD["depth"])
+    r["timing"] = {"total_s": round(time.time() - t0, 2)}
+    return r
+
+
+def t_fedgh_homog_3group(fm, seed, rounds):
+    """FedGH's server-trained head on the grouping-matched homogeneous
+    federation: every site holds `fm`, three projector groups as in the
+    balanced assignment, tied FedGH otherwise unchanged.  Isolates the
+    head-training rule inside a single-model federation."""
+    sp, gt, clab = _partition(seed)
+    bal = assign.assign_fms(list(sp), "balanced", seed, client_label=clab)
+    gname = {f: f"G{i}" for i, f in enumerate(assign.FMS)}
+    groups = {cid: gname[bal[cid]] for cid in bal}
+    homog = {cid: fm for cid in sp}
+    rsp, rgt = assign.route(sp, gt, homog)
+    d = _fmd()[fm]
+    fmd3 = {g: d for g in gname.values()}
+    return fedgh(rsp, rgt, groups, fmd3, rounds=rounds, seed=seed,
+                 log_every=rounds, aggregate_projector=True,
+                 k=HEAD["k"], depth=HEAD["depth"])
+
+
+def t_localonly(scheme, seed, rounds):
+    from hetfm.r2_localonly import train_local_only                 # noqa: E402
+    rsp, rgt, asn = _route(scheme, seed)
+    return train_local_only(rsp, rgt, asn, _fmd(), rounds=rounds, seed=seed,
+                            k=HEAD["k"])
+
+
 # ---- task registry: name -> (priority, callable(seed, rounds)) --------------
 def registry():
     R = {}
@@ -175,19 +212,34 @@ def registry():
     R["A_Conch_v15_linear_r450"] = (2, lambda s, r: t_homog("Conch_v15", s, 450))
     R["method_linear_balanced_r450"] = (2, lambda s, r: t_method("balanced", s, 450))
     R["A_Conch_v15_3group_linear_r450"] = (2, lambda s, r: t_homog_3group("Conch_v15", s, 450))
+    R["abl_ce_only_r450"] = (2, lambda s, r: t_method("balanced", s, 450, lam_proto=0.0, lam_con=0.0))
+    R["fedgh_tied_balanced_r450"] = (2, lambda s, r: t_fedgh("balanced", s, 450, True))
     # priority 3
     for sc in SCHEMES:
         R[f"base_{sc}"] = (3, lambda s, r, sc=sc: t_baselines(sc, s, r))
+    # priority 4 (added September 2026): capacity
+    # bracket around the heterogeneous protocol, faithful FedProtoKD and the
+    # local-only floor at the headline seeds, and FedGH's head rule inside a
+    # homogeneous federation
+    R["A_UNI_v2_3group_linear"] = (4, lambda s, r: t_homog_3group("UNI_v2", s, r))
+    R["A_Virchow2_3group_linear"] = (4, lambda s, r: t_homog_3group("Virchow2", s, r))
+    R["fedgh_tied_homog3_Conch_v15"] = (4, lambda s, r: t_fedgh_homog_3group("Conch_v15", s, r))
+    for sc in SCHEMES:
+        R[f"fpkd_A_{sc}"] = (4, lambda s, r, sc=sc: t_fpkd_faithful(sc, s, r))
+    for sc in SCHEMES:
+        R[f"localonly_{sc}"] = (4, lambda s, r, sc=sc: t_localonly(sc, s, r))
     return R
 
 
 def task_list():
     R = registry()
     out = []
-    for pr in (1, 2, 3):
+    for pr in (1, 2, 3, 4):
         names = [n for n, (p, _) in R.items() if p == pr]
         for seed in SEEDS:
             for n in names:
+                if n.endswith("_r450") and seed not in R450_SEEDS:
+                    continue            # the convergence check is a 5-seed study
                 out.append((n, seed))
     return out, R
 
@@ -304,11 +356,22 @@ def summarize():
                                                    if r[b]["macro_f1"] is not None])}
                               for b in BASELINES}
             continue
+        if n.startswith("fpkd_A_"):
+            rows = [json.loads(_path(n, s).read_text()) for s in _seeds_done(n)]
+            if not rows:
+                continue
+            out["arms"][n] = {"seeds": _seeds_done(n),
+                              "proto_per_site_routed": _ms([r["degeneracy"]["proto_per_site_routed"] for r in rows]),
+                              "head_selfeval_per_site": _ms([r["degeneracy"]["head_selfeval_per_site"] for r in rows])}
+            continue
         vals = load(n)
         if vals is None or any(v is None for v in vals):
             continue
         rows = [json.loads(_path(n, s).read_text()) for s in _seeds_done(n)]
         e = {"macro_acc": _ms(vals), "seeds": _seeds_done(n)}
+        for k in ("macro_acc_weighted", "macro_acc_best_site"):
+            if all(k in r for r in rows):
+                e[k] = _ms([r[k] for r in rows])
         f1 = [r.get("macro_f1") for r in rows]
         if all(v is not None for v in f1):
             e["macro_f1"] = _ms(f1)
@@ -398,9 +461,27 @@ def summarize():
                  ("A_Conch_v15_3group_ce_only", "A_Conch_v15_ce_only"),
                  ("A_Conch_v15_linear_r450", "A_Conch_v15_linear"),
                  ("method_linear_balanced_r450", "method_linear_balanced"),
-                 ("A_Conch_v15_3group_linear_r450", "A_Conch_v15_3group_linear")]:
+                 ("A_Conch_v15_3group_linear_r450", "A_Conch_v15_3group_linear"),
+                 ("abl_ce_only_r450", "abl_ce_only"), ("fedgh_tied_balanced_r450", "fedgh_tied_balanced"),
+                 ("method_linear_balanced_r450", "A_Conch_v15_3group_linear_r450"),
+                 ("method_linear_balanced_r450", "A_Conch_v15_linear_r450"),
+                 ("fedgh_tied_balanced_r450", "method_linear_balanced_r450"),
+                 ("fedgh_tied_balanced_r450", "abl_ce_only_r450"),
+                 ("abl_ce_only_r450", "method_linear_balanced_r450"),
+                 ("method_linear_balanced", "A_UNI_v2_3group_linear"),
+                 ("method_linear_balanced", "A_Virchow2_3group_linear"),
+                 ("A_UNI_v2_3group_linear", "A_UNI_v2_linear"),
+                 ("A_Virchow2_3group_linear", "A_Virchow2_linear"),
+                 ("A_Virchow2_3group_linear", "A_Conch_v15_3group_linear"),
+                 ("A_UNI_v2_3group_linear", "A_Conch_v15_3group_linear"),
+                 ("fedgh_tied_balanced", "fedgh_tied_homog3_Conch_v15"),
+                 ("fedgh_tied_homog3_Conch_v15", "A_Conch_v15_3group_ce_only"),
+                 ("fedgh_tied_homog3_Conch_v15", "A_Conch_v15_3group_linear")]:
         if has(a, b):
             con[f"{a}_minus_{b}"] = _paired_arms(a, b)
+    for sc in SCHEMES:
+        if has(f"method_linear_{sc}", f"localonly_{sc}"):
+            con[f"method_linear_{sc}_minus_localonly_{sc}"] = _paired_arms(f"method_linear_{sc}", f"localonly_{sc}")
     out["contrasts"] = con
     # reproduction check against the submitted (frozen) per-seed values
     try:

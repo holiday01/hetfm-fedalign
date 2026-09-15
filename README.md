@@ -44,6 +44,8 @@ scheme-level comparison at the thirty headline seeds), `run_mincount.py` /
   seeds (matched homogeneous controls, loss-term and head ablations, FedGH,
   450-round checks) and its summariser
 - `hetfm/r2_backend.py`   GPU versus CPU (24 / 2 threads) backend study
+- `hetfm/r2_localonly.py` local-only floor of the mixed federation (per-site
+  projector and head, scored on the global test set)
 - `hetfm/r2_cost.py`      timing and memory pass for the cost table
 - `tools/mi_fm_y.py`      mutual information between model identity and
   class, and the identity-only classifier, per assignment scheme
@@ -78,8 +80,8 @@ Paths are hard-coded for the original environment; set them for yours:
 
 ## Environment
 
-Python 3.11.9; see `requirements.txt` (torch 2.10, numpy 1.26.4,
-scipy 1.13.1, matplotlib 3.10.8, scikit-learn 1.6.1). Run module-style
+Python 3.11.9; see `requirements.txt` (torch 2.10.0, numpy 2.1.3,
+scipy 1.17.1, matplotlib 3.10.8, scikit-learn 1.9.0). Run module-style
 from the repository root, e.g.:
 
 ```
