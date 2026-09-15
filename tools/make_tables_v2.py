@@ -42,7 +42,7 @@ def pval(c):
     if not c or c.get("wilcoxon_p") is None: return NA
     p = c["wilcoxon_p"]
     if p < 1e-4: return "$<10^{-4}$"
-    return f"${p:.2g}$" if p < 0.01 else f"${p:.2f}$"
+    return f"${p:.2g}$" if p < 0.1 else f"${p:.2f}$"      # two significant figures below 0.1 (0.055, not 0.05)
 def rows_write(name, rows):
     (OUT / name).write_text("\n".join(rows) + "\n"); print("wrote", OUT / name, len(rows), "rows")
 def jload(name, seed):
@@ -121,7 +121,9 @@ for lab, bal, adv in [("Reference protocol (anchors, averaged head)", "method_li
                       ("Tied FedGH (server-trained head)", "fedgh_tied_balanced", "fedgh_tied_adversarial"),
                       ("No head (anchors only)", "head_none_proto", None),
                       ("Homogeneous CONCH, one projector", "A_Conch_v15_linear", None),
+                      ("Homogeneous CONCH, one projector, cross-entropy only", "A_Conch_v15_ce_only", None),
                       ("Homogeneous CONCH, three group projectors", "A_Conch_v15_3group_linear", None),
+                      ("Homogeneous CONCH, three group projectors, cross-entropy only", "A_Conch_v15_3group_ce_only", None),
                       ("Homogeneous UNI v2, one projector", "A_UNI_v2_linear", None),
                       ("Homogeneous UNI v2, three group projectors", "A_UNI_v2_3group_linear", None),
                       ("Homogeneous Virchow2, one projector", "A_Virchow2_linear", None),
@@ -200,7 +202,7 @@ rows_write("supp_S4_scheme.tex", rows)
 from scipy import stats
 names = ['BRCA', 'COAD', 'STAD', 'LGG', 'LUAD', 'HNSC', 'SKCM', 'CESC', 'PAAD']
 def pfmt(h):
-    return "$<10^{-4}$" if h < 1e-4 else (f"${h:.2g}$" if h < 0.01 else f"${h:.2f}$")
+    return "$<10^{-4}$" if h < 1e-4 else (f"${h:.2g}$" if h < 0.1 else f"${h:.2f}$")
 def perclass_rows(Mm, Aa):
     ps, rws = [], []
     rng = np.random.default_rng(0)
@@ -253,6 +255,11 @@ for (n, mm_, a, d, lo, hi, ng), h in zip(rws, holm):
     rows.append(f"{n} & ${mm_:.3f}$ & ${a:.3f}$ & ${d:+.3f}$ & $[{lo:+.3f},\\,{hi:+.3f}]$ & {ng}/{len(common)} & {pfmt(h)} & {sig} \\\\")
 rows_write("supp_S7_perclass_matched.tex", rows)
 (OUT / "supp_S7_n.txt").write_text(str(len(common)))
+# ---- supplementary S8: per-cancer vs the single-projector and three-group Virchow2 federations ----
+for ctrl_arm, fname in [("A_Virchow2_linear", "supp_S8_perclass_virchow1.tex"), ("A_Virchow2_3group_linear", "supp_S8_perclass_virchow3.tex")]:
+    G2 = perclass(ctrl_arm); common2 = [s for s in M if s in G2]
+    Mm = np.array([M[s] for s in common2], dtype=float); Aa = np.array([G2[s] for s in common2], dtype=float)
+    rows_write(fname, perclass_rows(Mm, Aa))
 
 # ---- backend rows (E8) ----------------------------------------------------------------------------
 bk = R / "r2_batch" / "backend"; rows = []
@@ -345,7 +352,7 @@ print("copied to", dst)
 # ---- refresh the supplementary bodies between markers ------------------------------------------
 supp = V2 / "supplementary.tex"; ss = supp.read_text(); nrep = 0
 import re as _re
-for name in ["supp_S1_counts", "supp_S2_perclass_single", "supp_S3_fpkd_faithful", "supp_S3_fedgh_faithful", "supp_S4_scheme", "supp_S6_diag_variants", "supp_S7_perclass_matched"]:
+for name in ["supp_S1_counts", "supp_S2_perclass_single", "supp_S8_perclass_virchow1", "supp_S8_perclass_virchow3", "supp_S3_fpkd_faithful", "supp_S3_fedgh_faithful", "supp_S4_scheme", "supp_S6_diag_variants", "supp_S7_perclass_matched"]:
     body = (OUT / f"{name}.tex").read_text()
     pat = _re.compile(r"%<" + name + r">\n.*?%</" + name + r">\n", _re.S)
     if pat.search(ss):

@@ -4,7 +4,7 @@ table has a single provenance.  Results are cached one JSON per (task, seed)
 under results/r2_batch/; nothing in results/*.json from the submission is
 touched or overwritten (run_hetfm.run is deliberately not used).
 
-  cd /home/holiday01/fl_wsi
+  cd <repo-root>
   python -m hetfm.run_r2_batch --worker 0 --nworkers 3      # one shard
   python -m hetfm.run_r2_batch --list                       # task inventory
   python -m hetfm.run_r2_batch --summarize                  # aggregate
@@ -297,9 +297,9 @@ def work(worker, nworkers, rounds=ROUNDS, only=None, seeds=None):
 # ---- summarize ---------------------------------------------------------------
 def _ms(xs):
     import statistics as st
-    return {"mean": round(st.mean(xs), 4),
-            "std": round(st.pstdev(xs), 4) if len(xs) > 1 else 0.0,
-            "n": len(xs), "per_seed": [round(x, 4) for x in xs]}
+    return {"mean": round(st.mean(xs), 6),
+            "std": round(st.pstdev(xs), 6) if len(xs) > 1 else 0.0,
+            "n": len(xs), "per_seed": [round(x, 6) for x in xs]}      # 6 dp: tables re-round to 3 dp without double-rounding error
 
 
 def _paired(a, b):
@@ -309,10 +309,10 @@ def _paired(a, b):
     rng = np.random.default_rng(0)
     arr = np.asarray(d)
     means = rng.choice(arr, size=(10000, arr.size), replace=True).mean(axis=1)
-    o = {"n": len(d), "mean_diff": round(st.mean(d), 4),
+    o = {"n": len(d), "mean_diff": round(st.mean(d), 6),
          "n_a_gt_b": f"{sum(1 for x in d if x > 0)}/{len(d)}",
-         "boot_ci95": [round(float(np.percentile(means, 2.5)), 4),
-                       round(float(np.percentile(means, 97.5)), 4)]}
+         "boot_ci95": [round(float(np.percentile(means, 2.5)), 6),
+                       round(float(np.percentile(means, 97.5)), 6)]}
     try:
         from scipy import stats
         o["wilcoxon_p"] = float(f"{stats.wilcoxon(a, b).pvalue:.3g}")
@@ -476,7 +476,10 @@ def summarize():
                  ("A_UNI_v2_3group_linear", "A_Conch_v15_3group_linear"),
                  ("fedgh_tied_balanced", "fedgh_tied_homog3_Conch_v15"),
                  ("fedgh_tied_homog3_Conch_v15", "A_Conch_v15_3group_ce_only"),
-                 ("fedgh_tied_homog3_Conch_v15", "A_Conch_v15_3group_linear")]:
+                 ("fedgh_tied_homog3_Conch_v15", "A_Conch_v15_3group_linear"),
+                 ("fedgh_tied_balanced", "A_Virchow2_3group_linear"),
+                 ("abl_ce_only", "A_Virchow2_3group_linear"),
+                 ("A_Virchow2_3group_linear", "A_Conch_v15_3group_linear")]:
         if has(a, b):
             con[f"{a}_minus_{b}"] = _paired_arms(a, b)
     for sc in SCHEMES:
