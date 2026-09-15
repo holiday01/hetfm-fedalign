@@ -15,9 +15,9 @@ head, and class prototypes are exchanged; encoders and slides never move.
 
 ```
 hetfm/          protocol, baselines, runners, figure/table generators
+tools/          table and figure generators from result JSONs
 data/           TCGA tissue-source-site partitioner (reused infrastructure)
-results/        aggregate metric JSONs (macro accuracy etc.; no patient data)
-PREREGISTRATION.md   frozen analysis plan (timestamp inside; = paper SI S7)
+PREREGISTRATION.md   frozen analysis plan (timestamp inside)
 requirements.txt / LICENSE / .gitignore
 ```
 
@@ -27,8 +27,33 @@ schemes), `projector.py`, `proto_anchor.py` (the protocol), `baselines_het.py`
 and tuned variants), `diagnostics.py` (silhouette + cross-model prototype
 agreement). Runners: `verify_week1.py`, `run_hetfm.py`, `run_grid.py`,
 `run_week4/5/6.py`, `run_linear_rebaseline.py`, `run_perclass.py`,
-`run_prereg.py` (executes the frozen plan), `make_figures.py`,
+`run_prereg.py` (executes the frozen plan), `run_seedext.py` (every
+scheme-level comparison at the thirty headline seeds), `run_mincount.py` /
+`run_mincount_clean.py` (minimum-count gate sweep), `make_figures.py`,
 `make_supp.py`.
+
+## Extended runners and baselines
+
+- `hetfm/r2_trainer.py`   trainer with head modes (shared / local / none),
+  per-class recall, nearest-prototype accuracy, alignment diagnostics, a
+  model-identity probe, timing and peak memory; reproduces `proto_anchor.py`
+  bit-for-bit on the same backend
+- `hetfm/fedgh.py`        FedGH (Yi et al., ACM MM 2023) in faithful and
+  tied form, with a cross-site routing probe
+- `hetfm/run_r2_batch.py` single-GPU batch runner over the thirty headline
+  seeds (matched homogeneous controls, loss-term and head ablations, FedGH,
+  450-round checks) and its summariser
+- `hetfm/r2_backend.py`   GPU versus CPU (24 / 2 threads) backend study
+- `hetfm/r2_cost.py`      timing and memory pass for the cost table
+- `tools/mi_fm_y.py`      mutual information between model identity and
+  class, and the identity-only classifier, per assignment scheme
+- `tools/make_tables_v2.py`, `tools/make_figures_v2.py`,
+  `tools/fig1_overview_v2.py`   tables and figures from the batch summary;
+  no hand-typed numbers
+
+These files carry `<repo-root>`, `<analysis-dir>` and `<out-dir>`
+placeholders where the original environment had absolute paths; set them
+before running (`python -m hetfm.run_r2_batch --help`).
 
 ## Data
 
@@ -74,9 +99,9 @@ pre-specified plan, not a third-party registry entry.
 
 ## Results
 
-`results/*.json` are aggregate metrics only (macro accuracy / F1, per-seed
-and summarised; no patient-level or slide data) and reproduce the numbers
-in the manuscript and supplementary tables.
+Per-seed aggregate metric files (macro accuracy / F1 and diagnostics; no
+patient-level or slide data) are available from the author and will be
+added here on publication.
 
 ## License & citation
 

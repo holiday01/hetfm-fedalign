@@ -12,6 +12,7 @@ contribution #4). Two mechanistic metrics on the trained headline model:
 Run on a few seeds at the linear headline config. Output diagnostics.json
 + a figure. Gives the evidence the Discussion currently asserts.
 """
+import os
 import json
 import sys
 from itertools import combinations
@@ -103,7 +104,7 @@ if __name__ == "__main__":
                "latent space after alignment. High cross-FM prototype "
                "cosine => the three frozen FMs are mapped into a shared "
                "geometry (alignment), not merely co-located; this is the "
-               "mechanistic evidence for RQ1/RQ2 (proposal contribution "
+               "mechanistic evidence for the alignment claims (contribution "
                "#4).")}
     (RESULTS / "diagnostics.json").write_text(json.dumps(out, indent=2))
 
@@ -111,9 +112,11 @@ if __name__ == "__main__":
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        plt.rcParams.update({"savefig.dpi": 300, "font.size": 12,
-                             "axes.labelsize": 13})
-        fig, ax = plt.subplots(1, 2, figsize=(6.5, 3.0))
+        plt.rcParams.update({"savefig.dpi": 300, "font.size": 8,
+                             "axes.labelsize": 8.5,
+                             "xtick.labelsize": 7.5,
+                             "ytick.labelsize": 7.5})
+        fig, ax = plt.subplots(1, 2, figsize=(3.5, 2.2))
         s = [r["silhouette_class"] for r in rows]
         x = [r["xfm_prototype_cosine"] for r in rows]
         ax[0].bar(range(len(rows)), s, color="#1b5e9c")
@@ -126,7 +129,7 @@ if __name__ == "__main__":
         ax[1].set_ylabel("Cross-FM prototype cosine")
         ax[1].set_xlabel("Seed")
         fig.tight_layout()
-        fig.savefig("/home/holiday01/fl_wsi_adaptive/manuscript_hetfm/"
+        fig.savefig(os.environ.get("HETFM_FIGDIR", "figures") + "/"
                     "figures/fig5_diagnostics.pdf", bbox_inches="tight")
         print("wrote fig5_diagnostics.pdf", flush=True)
     except Exception as e:                                      # noqa: BLE001
