@@ -94,8 +94,8 @@ rows.append("\\multicolumn{6}{l}{\\emph{Loss terms (averaged head, linear projec
 rows.append(arow("Cross-entropy only (no anchor terms)", "abl_ce_only"))
 rows.append(arow("Cross-entropy + prototype matching", "abl_ce_proto"))
 rows.append(arow("Cross-entropy + contrastive", "abl_ce_con"))
-rows.append("\\multicolumn{6}{l}{\\emph{Classifier head (linear projector, both anchor terms kept)}} \\\\")
-rows.append(arow("No head: nearest global prototype", "head_none_proto"))
+rows.append("\\multicolumn{6}{l}{\\emph{Classifier head (linear projector, both prototype terms kept; scored by nearest global prototype)}} \\\\")
+rows.append(arow("No head (no cross-entropy term): nearest global prototype", "head_none_proto"))
 rows.append(arow("Local heads, never averaged; nearest-prototype inference", "head_local"))
 rows.append("\\multicolumn{6}{l}{\\emph{Head-training rule (linear projector, no anchor terms)}} \\\\")
 rows.append(arow("Head trained at the server on uploaded class means (tied FedGH)", "fedgh_tied_balanced"))
@@ -112,7 +112,10 @@ rows_write("tab_ablation.tex", rows)
 # ---- inference-rule table: shared head versus nearest global prototype ----
 rows = []
 def hp(arm, key):
-    return pm(arm, key) if has(arm) and key in A[arm] else NA
+    if not has(arm): return NA
+    if key in A[arm]: return pm(arm, key)
+    if key == "acc_head" and arm.startswith("fedgh_tied"): return pm(arm, "macro_acc")   # FedGH: primary classifier is the head
+    return NA                                              # prototype-primary arms (no head) have no head score
 for lab, bal, adv in [("Reference protocol (anchors, averaged head)", "method_linear_balanced", "method_linear_adversarial"),
                       ("Cross-entropy only (averaged head)", "abl_ce_only", "abl_ce_only_adversarial"),
                       ("Tied FedGH (server-trained head)", "fedgh_tied_balanced", "fedgh_tied_adversarial"),
@@ -164,7 +167,11 @@ for label, arm in [("Full reference protocol", "method_linear_balanced"), ("Cros
                    ("Cross-entropy + matching", "abl_ce_proto"), ("Cross-entropy + contrastive", "abl_ce_con"),
                    ("No head, nearest prototype", "head_none_proto"), ("Local heads", "head_local"),
                    ("One hidden layer", "method_1hidden_balanced"), ("Two hidden layers", "method_2hidden_balanced"),
+                   ("One hidden layer, cross-entropy only", "abl_ce_only_1hidden_balanced"),
+                   ("One hidden layer, cross-entropy + contrastive", "abl_ce_con_1hidden_balanced"),
                    ("Homog.\\ CONCH, three group projectors", "A_Conch_v15_3group_linear"),
+                   ("Homog.\\ UNI v2, three group projectors", "A_UNI_v2_3group_linear"),
+                   ("Homog.\\ Virchow2, three group projectors", "A_Virchow2_3group_linear"),
                    ("Homog.\\ CONCH, one projector", "A_Conch_v15_linear")]:
     rows.append(f"{label} & {pm(arm)} & {cell(arm, 'silhouette_class')} & {cell(arm, 'xfm_prototype_cosine')} & {cell(arm, 'fm_probe_balanced_acc')} \\\\")
 rows_write("supp_S6_diag_variants.tex", rows)
@@ -251,12 +258,19 @@ rows_write("supp_S7_perclass_matched.tex", rows)
 bk = R / "r2_batch" / "backend"; rows = []
 if bk.exists():
     gpu = {s: jload("method_linear_balanced", s)["macro_acc"] for s in [62, 63, 64, 65, 66] if jload("method_linear_balanced", s)}
-    for arm, lab in [("cpu_t24", "CPU (24 threads) vs GPU, same seed"), ("cpu_t2", "CPU (2 threads) vs GPU, same seed")]:
+    for arm, lab in [("cpu_t24", "CPU (24 threads) vs GPU, same seed, $m=8$"), ("cpu_t2", "CPU (2 threads) vs GPU, same seed, $m=8$")]:
         d = [json.loads((bk / f"{arm}_s{s}.json").read_text())["macro_acc"] - gpu[s] for s in gpu if (bk / f"{arm}_s{s}.json").exists()]
         if d:
             d = np.array(d)
             rows.append(f"{lab} & {len(d)} & ${d.mean():+.3f}$ & ${d.std(ddof=1) if len(d) > 1 else 0:.3f}$ & ${np.abs(d).max():.3f}$ \\\\")
 rows_write("tab_backend_rows.tex", rows)
+# seed-to-seed SD rows (population SD over the thirty seeds, as in Table 5): m=8 reference and the m=1 / m=16 gate sweeps
+import statistics as _st
+_sw = json.loads((R / "mincount_sweep_clean.json").read_text())["arms"]
+_m8 = A["method_linear_balanced"]["macro_acc"]["std"]
+_g = sorted(_st.pstdev(_sw[k]["per_seed"]) for k in ("m1", "m16"))
+rows_write("tab_seed_rows.tex", [f"Seed to seed, one backend, $m=8$ (reference) & 30 & -- & ${_m8:.3f}$ & -- \\\\",
+                                 f"Seed to seed, one backend, $m=1$ / $m=16$ gate sweeps & 30 & -- & ${_g[0]:.3f}$--${_g[1]:.3f}$ & -- \\\\"])
 
 # ---- cost table ------------------------------------------------------------------------------------
 an = json.loads((REV / "cost_analytic.json").read_text())
