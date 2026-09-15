@@ -36,7 +36,11 @@ def fig2():
     names = [("plain_fedavg_Conch_v15", "Plain\nFedAvg"), ("A_Conch_v15_linear", "Homog.\nCONCH\n1 proj."),
              ("A_Conch_v15_3group_linear", "Homog.\nCONCH\n3 proj."), ("method_linear_balanced", "Protocol\n(ref.)"),
              ("abl_ce_only", "Protocol\nCE only"), ("fedgh_tied_balanced", "Tied\nFedGH")]
-    vals = [LB] + [ms(n)[0] for n, _ in names]; errs = [0] + [ms(n)[1] for n, _ in names]
+    if "localonly_balanced" in A and "macro_acc" in A["localonly_balanced"]:
+        lo_m, lo_e = ms("localonly_balanced")[0], ms("localonly_balanced")[1]   # thirty-seed local-only floor
+    else:
+        lo_m, lo_e = LB, 0                              # historical Week-1 constant (no SD)
+    vals = [lo_m] + [ms(n)[0] for n, _ in names]; errs = [lo_e] + [ms(n)[1] for n, _ in names]
     labels = ["Local-\nonly"] + [l for _, l in names]
     cols = [C["lb"], C["base"], C["ctrl"], C["ctrl"], C["method"], C["method"], C["fedgh"]]
     fig, ax = plt.subplots(figsize=(3.5, 2.8))
@@ -82,7 +86,7 @@ def fig3():
     ax.set_xticks(list(x)); ax.set_xticklabels(DISP)
     ax.set_xlabel("Model-to-site assignment scheme")
     ax.set_ylabel("Macro accuracy (9-class)"); ax.set_ylim(0.3, 1.0)
-    ax.legend(loc="lower right", frameon=False, fontsize=6.3)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2, frameon=False, fontsize=6.3)
     save(fig, "fig3_rq4_inversion.pdf")
 
 
