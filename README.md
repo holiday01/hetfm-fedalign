@@ -1,9 +1,12 @@
 # Aligning incompatible pathology foundation models for federated learning
 
-Code, the frozen pre-registered analysis plan, and aggregate result tables
-for *A Prototype-Anchored Projector Protocol and Heterogeneity-Tolerance
-Testbed for Federated Learning across Incompatible Pathology Foundation
-Models* (single author: Yen-Jung Chiu, Chang Gung University).
+Code and the frozen analysis plan for federated learning across
+incompatible frozen pathology foundation models: an architecture-tied
+projector protocol, a 107-site TCGA testbed with four model-to-site
+assignment schemes, homogeneous controls matched in projector grouping,
+loss and head ablations, and model-heterogeneous baselines (single author:
+Yen-Jung Chiu, Chang Gung University). Per-seed aggregate results will be
+added on publication of the associated article.
 
 Each site holds a *different, frozen* pathology foundation model with
 incompatible embedding dimensionality; weight-averaging federated learning
@@ -95,9 +98,11 @@ python -m hetfm.diagnostics           # alignment-quality diagnostics
 ## Pre-registration
 
 `PREREGISTRATION.md` is the analysis plan, fixed (timestamp inside) before
-the confirmatory runs and not edited afterwards; it is reproduced in the
-paper's Supplementary Information (Section S7). It is an author-committed
-pre-specified plan, not a third-party registry entry.
+the confirmatory runs and not edited afterwards; it covers the recovery and
+baseline comparisons and their decision criteria, whereas the grouped
+controls, ablations and additional baselines were specified after those runs
+and are post hoc. It is an author-committed pre-specified plan, not a
+third-party registry entry.
 
 ## Results
 
@@ -108,5 +113,5 @@ added here on publication.
 ## License & citation
 
 MIT (see `LICENSE`; confirm or change to your preferred license before
-publishing). If you use this code, please cite the paper (Discover
-Computing; full reference to be added on acceptance).
+publishing). If you use this code, please cite the associated article; the
+full reference will be added here on publication.
