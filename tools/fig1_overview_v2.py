@@ -1,5 +1,5 @@
 """Fig. 1 (v2): protocol overview WITH the federated communication loop.
-Schematic only, no data."""
+Schematic only, no data; vectors (prototypes, class means) in bold."""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -49,16 +49,16 @@ ax.add_patch(FancyBboxPatch((6.6, 1.65), 3.2, 2.8, boxstyle="round,pad=0.08",
 ax.text(8.2, 4.05, "Server", ha="center", va="center", fontsize=8, weight="bold")
 ax.text(8.2, 2.95, "shared head $g_\\phi$: average over all sites\n"
         "projectors $P_\\tau$: average only within\n   the sites holding architecture $\\tau$\n"
-        "prototypes $\\mu_c$: count-weighted class\n   means, EMA $\\rho$, gate $m$",
+        "prototypes $\\boldsymbol{\\mu}_c$: count-weighted means of\n   the uploaded class means, EMA $\\rho$",
         ha="center", va="center", fontsize=6.4)
 
 # step legend (the loop)
 ax.text(0.25, 7.45, "One communication round", fontsize=7.5, weight="bold", va="top")
-steps = ["1  server $\\to$ site $i$: $g_\\phi$, $P_{\\tau(i)}$, $\\{\\mu_c\\}$  (dashed orange)",
+steps = ["1  server $\\to$ site $i$: $g_\\phi$, $P_{\\tau(i)}$, $\\{\\boldsymbol{\\mu}_c\\}$  (dashed orange)",
          "2  local update of copies $P_i, g_i$ on $\\mathcal{L}_i$ for $E$ epochs",
-         "3  site $i$ $\\to$ server: $P_i$, $g_i$, class means $(\\bar z_{i,c}, n_{i,c})$  (solid blue)",
+         "3  site $i$ $\\to$ server: $P_i$, $g_i$, gated class means $(\\bar{\\mathbf{z}}_{i,c}, n_{i,c})$, $n_{i,c}\\geq m$  (solid blue)",
          "4  server: average $g_\\phi$; average each $P_\\tau$ within its architecture;\n"
-         "    update $\\mu_c$; then step 1 again.  Encoders, embeddings, slides never move."]
+         "    update $\\boldsymbol{\\mu}_c$; then step 1 again.  Encoders, embeddings, slides never move."]
 ax.text(0.25, 7.1, "\n".join(steps), fontsize=6.3, va="top", linespacing=1.35)
 fig.savefig(OUT / "fig1_overview.pdf", bbox_inches="tight")
 print("wrote", OUT / "fig1_overview.pdf")
