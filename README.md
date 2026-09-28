@@ -112,12 +112,13 @@ third-party registry entry.
 
 ## Results
 
-Per-seed aggregate metric files (macro accuracy / F1 and diagnostics; no
-patient-level or slide data) are available from the author and will be
-added here on publication.
+Per-seed result files of every reported configuration (macro accuracy and
+macro-F1, shared-head and nearest-prototype scores, diagnostics and per-class
+recall; no patient-level or slide data) are in `per_seed_results/`, with a
+README describing each column and `recompute_tables.py`, which recomputes the
+reported statistics from them.
 
 ## License & citation
 
-MIT (see `LICENSE`; confirm or change to your preferred license before
-publishing). If you use this code, please cite the associated article; the
+MIT (see `LICENSE`). If you use this code, please cite the associated article; the
 full reference will be added here on publication.
