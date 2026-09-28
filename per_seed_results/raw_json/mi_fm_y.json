@@ -1,0 +1,1831 @@
+{
+ "seeds": [
+  62,
+  63,
+  64,
+  65,
+  66,
+  67,
+  68,
+  69,
+  70,
+  71,
+  72,
+  73,
+  74,
+  75,
+  76,
+  77,
+  78,
+  79,
+  80,
+  81,
+  82,
+  83,
+  84,
+  85,
+  86,
+  87,
+  88,
+  89,
+  90,
+  91
+ ],
+ "per_seed": {
+  "balanced": [
+   {
+    "seed": 62,
+    "I_FM_Y_bits": 0.2896,
+    "H_Y_bits": 2.8362,
+    "H_FM_bits": 1.544,
+    "normalized_I_over_HY": 0.1021,
+    "fm_only_macro_acc": 0.1613,
+    "fm_only_overall_acc": 0.3195,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 63,
+    "I_FM_Y_bits": 0.1666,
+    "H_Y_bits": 2.8331,
+    "H_FM_bits": 1.5782,
+    "normalized_I_over_HY": 0.0588,
+    "fm_only_macro_acc": 0.1594,
+    "fm_only_overall_acc": 0.287,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 64,
+    "I_FM_Y_bits": 0.3271,
+    "H_Y_bits": 2.8321,
+    "H_FM_bits": 1.5776,
+    "normalized_I_over_HY": 0.1155,
+    "fm_only_macro_acc": 0.1649,
+    "fm_only_overall_acc": 0.3356,
+    "classes_seen_per_fm": {
+     "UNI_v2": 8,
+     "Conch_v15": 8,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 65,
+    "I_FM_Y_bits": 0.2033,
+    "H_Y_bits": 2.8324,
+    "H_FM_bits": 1.5678,
+    "normalized_I_over_HY": 0.0718,
+    "fm_only_macro_acc": 0.1743,
+    "fm_only_overall_acc": 0.3089,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 66,
+    "I_FM_Y_bits": 0.2683,
+    "H_Y_bits": 2.8421,
+    "H_FM_bits": 1.5748,
+    "normalized_I_over_HY": 0.0944,
+    "fm_only_macro_acc": 0.1596,
+    "fm_only_overall_acc": 0.2994,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 67,
+    "I_FM_Y_bits": 0.1732,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5651,
+    "normalized_I_over_HY": 0.0611,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2849,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 68,
+    "I_FM_Y_bits": 0.192,
+    "H_Y_bits": 2.8355,
+    "H_FM_bits": 1.5541,
+    "normalized_I_over_HY": 0.0677,
+    "fm_only_macro_acc": 0.1685,
+    "fm_only_overall_acc": 0.327,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 8,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 69,
+    "I_FM_Y_bits": 0.2713,
+    "H_Y_bits": 2.8417,
+    "H_FM_bits": 1.5584,
+    "normalized_I_over_HY": 0.0955,
+    "fm_only_macro_acc": 0.165,
+    "fm_only_overall_acc": 0.3445,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 8,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 70,
+    "I_FM_Y_bits": 0.2098,
+    "H_Y_bits": 2.837,
+    "H_FM_bits": 1.5046,
+    "normalized_I_over_HY": 0.0739,
+    "fm_only_macro_acc": 0.1795,
+    "fm_only_overall_acc": 0.3404,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 71,
+    "I_FM_Y_bits": 0.1496,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5638,
+    "normalized_I_over_HY": 0.0528,
+    "fm_only_macro_acc": 0.1202,
+    "fm_only_overall_acc": 0.2692,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 72,
+    "I_FM_Y_bits": 0.1559,
+    "H_Y_bits": 2.8272,
+    "H_FM_bits": 1.5838,
+    "normalized_I_over_HY": 0.0551,
+    "fm_only_macro_acc": 0.14,
+    "fm_only_overall_acc": 0.2864,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 73,
+    "I_FM_Y_bits": 0.3826,
+    "H_Y_bits": 2.8352,
+    "H_FM_bits": 1.5551,
+    "normalized_I_over_HY": 0.1349,
+    "fm_only_macro_acc": 0.1723,
+    "fm_only_overall_acc": 0.3457,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 8,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 74,
+    "I_FM_Y_bits": 0.2256,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5499,
+    "normalized_I_over_HY": 0.0797,
+    "fm_only_macro_acc": 0.1449,
+    "fm_only_overall_acc": 0.2912,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 75,
+    "I_FM_Y_bits": 0.1623,
+    "H_Y_bits": 2.8323,
+    "H_FM_bits": 1.5618,
+    "normalized_I_over_HY": 0.0573,
+    "fm_only_macro_acc": 0.1481,
+    "fm_only_overall_acc": 0.2813,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 76,
+    "I_FM_Y_bits": 0.1926,
+    "H_Y_bits": 2.829,
+    "H_FM_bits": 1.58,
+    "normalized_I_over_HY": 0.0681,
+    "fm_only_macro_acc": 0.1558,
+    "fm_only_overall_acc": 0.2789,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 77,
+    "I_FM_Y_bits": 0.1766,
+    "H_Y_bits": 2.8327,
+    "H_FM_bits": 1.5707,
+    "normalized_I_over_HY": 0.0624,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2774,
+    "classes_seen_per_fm": {
+     "Virchow2": 8,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 78,
+    "I_FM_Y_bits": 0.1911,
+    "H_Y_bits": 2.8339,
+    "H_FM_bits": 1.5833,
+    "normalized_I_over_HY": 0.0674,
+    "fm_only_macro_acc": 0.1501,
+    "fm_only_overall_acc": 0.3154,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 79,
+    "I_FM_Y_bits": 0.377,
+    "H_Y_bits": 2.8358,
+    "H_FM_bits": 1.5821,
+    "normalized_I_over_HY": 0.1329,
+    "fm_only_macro_acc": 0.219,
+    "fm_only_overall_acc": 0.3913,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 80,
+    "I_FM_Y_bits": 0.1589,
+    "H_Y_bits": 2.8354,
+    "H_FM_bits": 1.5765,
+    "normalized_I_over_HY": 0.056,
+    "fm_only_macro_acc": 0.1383,
+    "fm_only_overall_acc": 0.285,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 81,
+    "I_FM_Y_bits": 0.1179,
+    "H_Y_bits": 2.8308,
+    "H_FM_bits": 1.4899,
+    "normalized_I_over_HY": 0.0417,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2906,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 82,
+    "I_FM_Y_bits": 0.2461,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5788,
+    "normalized_I_over_HY": 0.0869,
+    "fm_only_macro_acc": 0.156,
+    "fm_only_overall_acc": 0.3015,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 83,
+    "I_FM_Y_bits": 0.2017,
+    "H_Y_bits": 2.8343,
+    "H_FM_bits": 1.5323,
+    "normalized_I_over_HY": 0.0711,
+    "fm_only_macro_acc": 0.1672,
+    "fm_only_overall_acc": 0.2899,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 8,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 84,
+    "I_FM_Y_bits": 0.1539,
+    "H_Y_bits": 2.8299,
+    "H_FM_bits": 1.5672,
+    "normalized_I_over_HY": 0.0544,
+    "fm_only_macro_acc": 0.164,
+    "fm_only_overall_acc": 0.2744,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 85,
+    "I_FM_Y_bits": 0.1401,
+    "H_Y_bits": 2.8319,
+    "H_FM_bits": 1.56,
+    "normalized_I_over_HY": 0.0495,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2741,
+    "classes_seen_per_fm": {
+     "Conch_v15": 8,
+     "Virchow2": 9,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 86,
+    "I_FM_Y_bits": 0.2347,
+    "H_Y_bits": 2.8357,
+    "H_FM_bits": 1.5827,
+    "normalized_I_over_HY": 0.0828,
+    "fm_only_macro_acc": 0.143,
+    "fm_only_overall_acc": 0.2923,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 87,
+    "I_FM_Y_bits": 0.1458,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5609,
+    "normalized_I_over_HY": 0.0514,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.288,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 88,
+    "I_FM_Y_bits": 0.1652,
+    "H_Y_bits": 2.8307,
+    "H_FM_bits": 1.5839,
+    "normalized_I_over_HY": 0.0584,
+    "fm_only_macro_acc": 0.154,
+    "fm_only_overall_acc": 0.3069,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 89,
+    "I_FM_Y_bits": 0.2011,
+    "H_Y_bits": 2.8348,
+    "H_FM_bits": 1.5633,
+    "normalized_I_over_HY": 0.0709,
+    "fm_only_macro_acc": 0.1526,
+    "fm_only_overall_acc": 0.2831,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 90,
+    "I_FM_Y_bits": 0.2078,
+    "H_Y_bits": 2.8373,
+    "H_FM_bits": 1.5589,
+    "normalized_I_over_HY": 0.0732,
+    "fm_only_macro_acc": 0.13,
+    "fm_only_overall_acc": 0.282,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 91,
+    "I_FM_Y_bits": 0.1915,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5698,
+    "normalized_I_over_HY": 0.0675,
+    "fm_only_macro_acc": 0.1409,
+    "fm_only_overall_acc": 0.2839,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   }
+  ],
+  "stratified": [
+   {
+    "seed": 62,
+    "I_FM_Y_bits": 0.1338,
+    "H_Y_bits": 2.8362,
+    "H_FM_bits": 1.5785,
+    "normalized_I_over_HY": 0.0472,
+    "fm_only_macro_acc": 0.1692,
+    "fm_only_overall_acc": 0.2971,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 63,
+    "I_FM_Y_bits": 0.1162,
+    "H_Y_bits": 2.8331,
+    "H_FM_bits": 1.5489,
+    "normalized_I_over_HY": 0.041,
+    "fm_only_macro_acc": 0.1223,
+    "fm_only_overall_acc": 0.2736,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 64,
+    "I_FM_Y_bits": 0.1732,
+    "H_Y_bits": 2.8321,
+    "H_FM_bits": 1.5711,
+    "normalized_I_over_HY": 0.0611,
+    "fm_only_macro_acc": 0.1899,
+    "fm_only_overall_acc": 0.3322,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 65,
+    "I_FM_Y_bits": 0.0778,
+    "H_Y_bits": 2.8324,
+    "H_FM_bits": 1.5515,
+    "normalized_I_over_HY": 0.0275,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2757,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 66,
+    "I_FM_Y_bits": 0.1388,
+    "H_Y_bits": 2.8421,
+    "H_FM_bits": 1.5823,
+    "normalized_I_over_HY": 0.0488,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2847,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 67,
+    "I_FM_Y_bits": 0.1218,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5786,
+    "normalized_I_over_HY": 0.043,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2849,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 68,
+    "I_FM_Y_bits": 0.0993,
+    "H_Y_bits": 2.8355,
+    "H_FM_bits": 1.5772,
+    "normalized_I_over_HY": 0.035,
+    "fm_only_macro_acc": 0.1402,
+    "fm_only_overall_acc": 0.2914,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 69,
+    "I_FM_Y_bits": 0.1257,
+    "H_Y_bits": 2.8417,
+    "H_FM_bits": 1.5665,
+    "normalized_I_over_HY": 0.0442,
+    "fm_only_macro_acc": 0.1517,
+    "fm_only_overall_acc": 0.3249,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 70,
+    "I_FM_Y_bits": 0.1086,
+    "H_Y_bits": 2.837,
+    "H_FM_bits": 1.5733,
+    "normalized_I_over_HY": 0.0383,
+    "fm_only_macro_acc": 0.1491,
+    "fm_only_overall_acc": 0.3038,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 71,
+    "I_FM_Y_bits": 0.1352,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5483,
+    "normalized_I_over_HY": 0.0477,
+    "fm_only_macro_acc": 0.149,
+    "fm_only_overall_acc": 0.3028,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 72,
+    "I_FM_Y_bits": 0.0944,
+    "H_Y_bits": 2.8272,
+    "H_FM_bits": 1.5592,
+    "normalized_I_over_HY": 0.0334,
+    "fm_only_macro_acc": 0.1251,
+    "fm_only_overall_acc": 0.2634,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 73,
+    "I_FM_Y_bits": 0.1282,
+    "H_Y_bits": 2.8352,
+    "H_FM_bits": 1.5808,
+    "normalized_I_over_HY": 0.0452,
+    "fm_only_macro_acc": 0.1448,
+    "fm_only_overall_acc": 0.2925,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 74,
+    "I_FM_Y_bits": 0.1006,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5505,
+    "normalized_I_over_HY": 0.0355,
+    "fm_only_macro_acc": 0.1486,
+    "fm_only_overall_acc": 0.3081,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 75,
+    "I_FM_Y_bits": 0.1585,
+    "H_Y_bits": 2.8323,
+    "H_FM_bits": 1.5666,
+    "normalized_I_over_HY": 0.056,
+    "fm_only_macro_acc": 0.1971,
+    "fm_only_overall_acc": 0.3514,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 76,
+    "I_FM_Y_bits": 0.1585,
+    "H_Y_bits": 2.829,
+    "H_FM_bits": 1.5734,
+    "normalized_I_over_HY": 0.056,
+    "fm_only_macro_acc": 0.1469,
+    "fm_only_overall_acc": 0.2883,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 77,
+    "I_FM_Y_bits": 0.1414,
+    "H_Y_bits": 2.8327,
+    "H_FM_bits": 1.5731,
+    "normalized_I_over_HY": 0.0499,
+    "fm_only_macro_acc": 0.1519,
+    "fm_only_overall_acc": 0.3132,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 78,
+    "I_FM_Y_bits": 0.1286,
+    "H_Y_bits": 2.8339,
+    "H_FM_bits": 1.5821,
+    "normalized_I_over_HY": 0.0454,
+    "fm_only_macro_acc": 0.138,
+    "fm_only_overall_acc": 0.2882,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 79,
+    "I_FM_Y_bits": 0.1369,
+    "H_Y_bits": 2.8358,
+    "H_FM_bits": 1.5696,
+    "normalized_I_over_HY": 0.0483,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2813,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 80,
+    "I_FM_Y_bits": 0.1011,
+    "H_Y_bits": 2.8354,
+    "H_FM_bits": 1.5541,
+    "normalized_I_over_HY": 0.0357,
+    "fm_only_macro_acc": 0.1414,
+    "fm_only_overall_acc": 0.2808,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 81,
+    "I_FM_Y_bits": 0.1139,
+    "H_Y_bits": 2.8308,
+    "H_FM_bits": 1.553,
+    "normalized_I_over_HY": 0.0402,
+    "fm_only_macro_acc": 0.1509,
+    "fm_only_overall_acc": 0.2923,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 82,
+    "I_FM_Y_bits": 0.1265,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5806,
+    "normalized_I_over_HY": 0.0446,
+    "fm_only_macro_acc": 0.1474,
+    "fm_only_overall_acc": 0.294,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 83,
+    "I_FM_Y_bits": 0.0902,
+    "H_Y_bits": 2.8343,
+    "H_FM_bits": 1.5624,
+    "normalized_I_over_HY": 0.0318,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2799,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 84,
+    "I_FM_Y_bits": 0.1023,
+    "H_Y_bits": 2.8299,
+    "H_FM_bits": 1.5759,
+    "normalized_I_over_HY": 0.0361,
+    "fm_only_macro_acc": 0.152,
+    "fm_only_overall_acc": 0.2988,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 85,
+    "I_FM_Y_bits": 0.0697,
+    "H_Y_bits": 2.8319,
+    "H_FM_bits": 1.5327,
+    "normalized_I_over_HY": 0.0246,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2741,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 86,
+    "I_FM_Y_bits": 0.1403,
+    "H_Y_bits": 2.8357,
+    "H_FM_bits": 1.5356,
+    "normalized_I_over_HY": 0.0495,
+    "fm_only_macro_acc": 0.151,
+    "fm_only_overall_acc": 0.2923,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 87,
+    "I_FM_Y_bits": 0.1336,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5798,
+    "normalized_I_over_HY": 0.0471,
+    "fm_only_macro_acc": 0.1502,
+    "fm_only_overall_acc": 0.311,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 88,
+    "I_FM_Y_bits": 0.1275,
+    "H_Y_bits": 2.8307,
+    "H_FM_bits": 1.578,
+    "normalized_I_over_HY": 0.0451,
+    "fm_only_macro_acc": 0.1111,
+    "fm_only_overall_acc": 0.2677,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 89,
+    "I_FM_Y_bits": 0.1246,
+    "H_Y_bits": 2.8348,
+    "H_FM_bits": 1.5819,
+    "normalized_I_over_HY": 0.044,
+    "fm_only_macro_acc": 0.1471,
+    "fm_only_overall_acc": 0.2939,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 90,
+    "I_FM_Y_bits": 0.1173,
+    "H_Y_bits": 2.8373,
+    "H_FM_bits": 1.5828,
+    "normalized_I_over_HY": 0.0413,
+    "fm_only_macro_acc": 0.15,
+    "fm_only_overall_acc": 0.3104,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 91,
+    "I_FM_Y_bits": 0.1086,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5603,
+    "normalized_I_over_HY": 0.0383,
+    "fm_only_macro_acc": 0.1322,
+    "fm_only_overall_acc": 0.2814,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   }
+  ],
+  "cancer_correlated": [
+   {
+    "seed": 62,
+    "I_FM_Y_bits": 0.478,
+    "H_Y_bits": 2.8362,
+    "H_FM_bits": 1.5272,
+    "normalized_I_over_HY": 0.1686,
+    "fm_only_macro_acc": 0.2213,
+    "fm_only_overall_acc": 0.3718,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 8,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 63,
+    "I_FM_Y_bits": 0.6811,
+    "H_Y_bits": 2.8331,
+    "H_FM_bits": 1.4891,
+    "normalized_I_over_HY": 0.2404,
+    "fm_only_macro_acc": 0.2952,
+    "fm_only_overall_acc": 0.4569,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 7,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 64,
+    "I_FM_Y_bits": 0.3423,
+    "H_Y_bits": 2.8321,
+    "H_FM_bits": 1.5294,
+    "normalized_I_over_HY": 0.1209,
+    "fm_only_macro_acc": 0.2023,
+    "fm_only_overall_acc": 0.3389,
+    "classes_seen_per_fm": {
+     "Conch_v15": 8,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 65,
+    "I_FM_Y_bits": 0.5427,
+    "H_Y_bits": 2.8324,
+    "H_FM_bits": 1.5052,
+    "normalized_I_over_HY": 0.1916,
+    "fm_only_macro_acc": 0.2511,
+    "fm_only_overall_acc": 0.3901,
+    "classes_seen_per_fm": {
+     "Conch_v15": 8,
+     "UNI_v2": 8,
+     "Virchow2": 7
+    }
+   },
+   {
+    "seed": 66,
+    "I_FM_Y_bits": 0.4804,
+    "H_Y_bits": 2.8421,
+    "H_FM_bits": 1.5446,
+    "normalized_I_over_HY": 0.169,
+    "fm_only_macro_acc": 0.2065,
+    "fm_only_overall_acc": 0.3888,
+    "classes_seen_per_fm": {
+     "Conch_v15": 7,
+     "Virchow2": 8,
+     "UNI_v2": 7
+    }
+   },
+   {
+    "seed": 67,
+    "I_FM_Y_bits": 0.6779,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5678,
+    "normalized_I_over_HY": 0.2393,
+    "fm_only_macro_acc": 0.2758,
+    "fm_only_overall_acc": 0.437,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 9,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 68,
+    "I_FM_Y_bits": 0.4963,
+    "H_Y_bits": 2.8355,
+    "H_FM_bits": 1.4197,
+    "normalized_I_over_HY": 0.175,
+    "fm_only_macro_acc": 0.2054,
+    "fm_only_overall_acc": 0.3675,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 7,
+     "Virchow2": 7
+    }
+   },
+   {
+    "seed": 69,
+    "I_FM_Y_bits": 0.4079,
+    "H_Y_bits": 2.8417,
+    "H_FM_bits": 1.5843,
+    "normalized_I_over_HY": 0.1436,
+    "fm_only_macro_acc": 0.1687,
+    "fm_only_overall_acc": 0.3306,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 70,
+    "I_FM_Y_bits": 0.5788,
+    "H_Y_bits": 2.837,
+    "H_FM_bits": 1.5548,
+    "normalized_I_over_HY": 0.204,
+    "fm_only_macro_acc": 0.28,
+    "fm_only_overall_acc": 0.4471,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 8,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 71,
+    "I_FM_Y_bits": 0.7264,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5479,
+    "normalized_I_over_HY": 0.2565,
+    "fm_only_macro_acc": 0.2757,
+    "fm_only_overall_acc": 0.4564,
+    "classes_seen_per_fm": {
+     "Virchow2": 8,
+     "UNI_v2": 9,
+     "Conch_v15": 6
+    }
+   },
+   {
+    "seed": 72,
+    "I_FM_Y_bits": 0.5387,
+    "H_Y_bits": 2.8272,
+    "H_FM_bits": 1.5692,
+    "normalized_I_over_HY": 0.1905,
+    "fm_only_macro_acc": 0.2087,
+    "fm_only_overall_acc": 0.3751,
+    "classes_seen_per_fm": {
+     "Conch_v15": 8,
+     "Virchow2": 8,
+     "UNI_v2": 7
+    }
+   },
+   {
+    "seed": 73,
+    "I_FM_Y_bits": 0.5485,
+    "H_Y_bits": 2.8352,
+    "H_FM_bits": 1.579,
+    "normalized_I_over_HY": 0.1935,
+    "fm_only_macro_acc": 0.2667,
+    "fm_only_overall_acc": 0.4015,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 7,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 74,
+    "I_FM_Y_bits": 0.3491,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.4563,
+    "normalized_I_over_HY": 0.1232,
+    "fm_only_macro_acc": 0.1499,
+    "fm_only_overall_acc": 0.2929,
+    "classes_seen_per_fm": {
+     "Conch_v15": 7,
+     "UNI_v2": 8,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 75,
+    "I_FM_Y_bits": 0.2722,
+    "H_Y_bits": 2.8323,
+    "H_FM_bits": 1.5531,
+    "normalized_I_over_HY": 0.0961,
+    "fm_only_macro_acc": 0.181,
+    "fm_only_overall_acc": 0.2905,
+    "classes_seen_per_fm": {
+     "Conch_v15": 8,
+     "Virchow2": 8,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 76,
+    "I_FM_Y_bits": 0.7288,
+    "H_Y_bits": 2.829,
+    "H_FM_bits": 1.4922,
+    "normalized_I_over_HY": 0.2576,
+    "fm_only_macro_acc": 0.2453,
+    "fm_only_overall_acc": 0.369,
+    "classes_seen_per_fm": {
+     "Conch_v15": 5,
+     "UNI_v2": 9,
+     "Virchow2": 7
+    }
+   },
+   {
+    "seed": 77,
+    "I_FM_Y_bits": 0.4395,
+    "H_Y_bits": 2.8327,
+    "H_FM_bits": 1.5632,
+    "normalized_I_over_HY": 0.1551,
+    "fm_only_macro_acc": 0.2035,
+    "fm_only_overall_acc": 0.3872,
+    "classes_seen_per_fm": {
+     "UNI_v2": 9,
+     "Conch_v15": 9,
+     "Virchow2": 7
+    }
+   },
+   {
+    "seed": 78,
+    "I_FM_Y_bits": 0.5241,
+    "H_Y_bits": 2.8339,
+    "H_FM_bits": 1.5836,
+    "normalized_I_over_HY": 0.1849,
+    "fm_only_macro_acc": 0.1547,
+    "fm_only_overall_acc": 0.3262,
+    "classes_seen_per_fm": {
+     "Virchow2": 8,
+     "Conch_v15": 9,
+     "UNI_v2": 5
+    }
+   },
+   {
+    "seed": 79,
+    "I_FM_Y_bits": 0.5275,
+    "H_Y_bits": 2.8358,
+    "H_FM_bits": 1.5451,
+    "normalized_I_over_HY": 0.186,
+    "fm_only_macro_acc": 0.2382,
+    "fm_only_overall_acc": 0.4032,
+    "classes_seen_per_fm": {
+     "Virchow2": 6,
+     "Conch_v15": 9,
+     "UNI_v2": 9
+    }
+   },
+   {
+    "seed": 80,
+    "I_FM_Y_bits": 0.6161,
+    "H_Y_bits": 2.8354,
+    "H_FM_bits": 1.5474,
+    "normalized_I_over_HY": 0.2173,
+    "fm_only_macro_acc": 0.2471,
+    "fm_only_overall_acc": 0.4292,
+    "classes_seen_per_fm": {
+     "Conch_v15": 7,
+     "Virchow2": 8,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 81,
+    "I_FM_Y_bits": 0.5093,
+    "H_Y_bits": 2.8308,
+    "H_FM_bits": 1.5408,
+    "normalized_I_over_HY": 0.1799,
+    "fm_only_macro_acc": 0.2064,
+    "fm_only_overall_acc": 0.3675,
+    "classes_seen_per_fm": {
+     "UNI_v2": 8,
+     "Virchow2": 8,
+     "Conch_v15": 8
+    }
+   },
+   {
+    "seed": 82,
+    "I_FM_Y_bits": 0.5507,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5578,
+    "normalized_I_over_HY": 0.1944,
+    "fm_only_macro_acc": 0.1779,
+    "fm_only_overall_acc": 0.3409,
+    "classes_seen_per_fm": {
+     "Virchow2": 7,
+     "UNI_v2": 7,
+     "Conch_v15": 9
+    }
+   },
+   {
+    "seed": 83,
+    "I_FM_Y_bits": 0.7401,
+    "H_Y_bits": 2.8343,
+    "H_FM_bits": 1.5328,
+    "normalized_I_over_HY": 0.2611,
+    "fm_only_macro_acc": 0.2661,
+    "fm_only_overall_acc": 0.4528,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 6,
+     "UNI_v2": 6
+    }
+   },
+   {
+    "seed": 84,
+    "I_FM_Y_bits": 0.5285,
+    "H_Y_bits": 2.8299,
+    "H_FM_bits": 1.5745,
+    "normalized_I_over_HY": 0.1868,
+    "fm_only_macro_acc": 0.2324,
+    "fm_only_overall_acc": 0.3586,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "Conch_v15": 8,
+     "UNI_v2": 7
+    }
+   },
+   {
+    "seed": 85,
+    "I_FM_Y_bits": 0.6418,
+    "H_Y_bits": 2.8319,
+    "H_FM_bits": 1.5828,
+    "normalized_I_over_HY": 0.2266,
+    "fm_only_macro_acc": 0.2187,
+    "fm_only_overall_acc": 0.4267,
+    "classes_seen_per_fm": {
+     "Virchow2": 8,
+     "Conch_v15": 8,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 86,
+    "I_FM_Y_bits": 0.6699,
+    "H_Y_bits": 2.8357,
+    "H_FM_bits": 1.5659,
+    "normalized_I_over_HY": 0.2363,
+    "fm_only_macro_acc": 0.263,
+    "fm_only_overall_acc": 0.4138,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "UNI_v2": 8,
+     "Virchow2": 8
+    }
+   },
+   {
+    "seed": 87,
+    "I_FM_Y_bits": 0.5634,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5476,
+    "normalized_I_over_HY": 0.1986,
+    "fm_only_macro_acc": 0.2504,
+    "fm_only_overall_acc": 0.4129,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 8,
+     "Conch_v15": 8
+    }
+   },
+   {
+    "seed": 88,
+    "I_FM_Y_bits": 0.7729,
+    "H_Y_bits": 2.8307,
+    "H_FM_bits": 1.5562,
+    "normalized_I_over_HY": 0.273,
+    "fm_only_macro_acc": 0.2824,
+    "fm_only_overall_acc": 0.4535,
+    "classes_seen_per_fm": {
+     "Conch_v15": 6,
+     "UNI_v2": 8,
+     "Virchow2": 9
+    }
+   },
+   {
+    "seed": 89,
+    "I_FM_Y_bits": 0.3205,
+    "H_Y_bits": 2.8348,
+    "H_FM_bits": 1.5608,
+    "normalized_I_over_HY": 0.1131,
+    "fm_only_macro_acc": 0.1856,
+    "fm_only_overall_acc": 0.3204,
+    "classes_seen_per_fm": {
+     "Conch_v15": 9,
+     "Virchow2": 8,
+     "UNI_v2": 8
+    }
+   },
+   {
+    "seed": 90,
+    "I_FM_Y_bits": 0.6818,
+    "H_Y_bits": 2.8373,
+    "H_FM_bits": 1.5752,
+    "normalized_I_over_HY": 0.2403,
+    "fm_only_macro_acc": 0.2778,
+    "fm_only_overall_acc": 0.4506,
+    "classes_seen_per_fm": {
+     "Virchow2": 9,
+     "UNI_v2": 9,
+     "Conch_v15": 8
+    }
+   },
+   {
+    "seed": 91,
+    "I_FM_Y_bits": 0.476,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5023,
+    "normalized_I_over_HY": 0.1678,
+    "fm_only_macro_acc": 0.2745,
+    "fm_only_overall_acc": 0.3593,
+    "classes_seen_per_fm": {
+     "UNI_v2": 8,
+     "Virchow2": 9,
+     "Conch_v15": 9
+    }
+   }
+  ],
+  "adversarial": [
+   {
+    "seed": 62,
+    "I_FM_Y_bits": 1.3933,
+    "H_Y_bits": 2.8362,
+    "H_FM_bits": 1.3933,
+    "normalized_I_over_HY": 0.4913,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5353,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "UNI_v2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 63,
+    "I_FM_Y_bits": 1.5594,
+    "H_Y_bits": 2.8331,
+    "H_FM_bits": 1.5594,
+    "normalized_I_over_HY": 0.5504,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.6025,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "UNI_v2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 64,
+    "I_FM_Y_bits": 1.5759,
+    "H_Y_bits": 2.8321,
+    "H_FM_bits": 1.5759,
+    "normalized_I_over_HY": 0.5564,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5399,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Virchow2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 65,
+    "I_FM_Y_bits": 1.5018,
+    "H_Y_bits": 2.8324,
+    "H_FM_bits": 1.5018,
+    "normalized_I_over_HY": 0.5302,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5506,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 66,
+    "I_FM_Y_bits": 1.5689,
+    "H_Y_bits": 2.8421,
+    "H_FM_bits": 1.5689,
+    "normalized_I_over_HY": 0.552,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.6054,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "Conch_v15": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 67,
+    "I_FM_Y_bits": 1.5006,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.5006,
+    "normalized_I_over_HY": 0.5298,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5537,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "UNI_v2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 68,
+    "I_FM_Y_bits": 1.4586,
+    "H_Y_bits": 2.8355,
+    "H_FM_bits": 1.4586,
+    "normalized_I_over_HY": 0.5144,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5538,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 69,
+    "I_FM_Y_bits": 1.5831,
+    "H_Y_bits": 2.8417,
+    "H_FM_bits": 1.5831,
+    "normalized_I_over_HY": 0.5571,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.6038,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "UNI_v2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 70,
+    "I_FM_Y_bits": 1.4646,
+    "H_Y_bits": 2.837,
+    "H_FM_bits": 1.4646,
+    "normalized_I_over_HY": 0.5163,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5529,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "UNI_v2": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 71,
+    "I_FM_Y_bits": 1.4274,
+    "H_Y_bits": 2.8326,
+    "H_FM_bits": 1.4274,
+    "normalized_I_over_HY": 0.5039,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5298,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "UNI_v2": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 72,
+    "I_FM_Y_bits": 1.5062,
+    "H_Y_bits": 2.8272,
+    "H_FM_bits": 1.5062,
+    "normalized_I_over_HY": 0.5328,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5891,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "UNI_v2": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 73,
+    "I_FM_Y_bits": 1.4212,
+    "H_Y_bits": 2.8352,
+    "H_FM_bits": 1.4212,
+    "normalized_I_over_HY": 0.5013,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5368,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 74,
+    "I_FM_Y_bits": 1.4488,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.4488,
+    "normalized_I_over_HY": 0.5115,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5194,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 75,
+    "I_FM_Y_bits": 1.5292,
+    "H_Y_bits": 2.8323,
+    "H_FM_bits": 1.5292,
+    "normalized_I_over_HY": 0.5399,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5993,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Virchow2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 76,
+    "I_FM_Y_bits": 1.4939,
+    "H_Y_bits": 2.829,
+    "H_FM_bits": 1.4939,
+    "normalized_I_over_HY": 0.5281,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5493,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Virchow2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 77,
+    "I_FM_Y_bits": 1.5435,
+    "H_Y_bits": 2.8327,
+    "H_FM_bits": 1.5435,
+    "normalized_I_over_HY": 0.5449,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.6094,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "UNI_v2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 78,
+    "I_FM_Y_bits": 1.5651,
+    "H_Y_bits": 2.8339,
+    "H_FM_bits": 1.5651,
+    "normalized_I_over_HY": 0.5523,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.602,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 79,
+    "I_FM_Y_bits": 1.4675,
+    "H_Y_bits": 2.8358,
+    "H_FM_bits": 1.4675,
+    "normalized_I_over_HY": 0.5175,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5226,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "UNI_v2": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 80,
+    "I_FM_Y_bits": 1.4754,
+    "H_Y_bits": 2.8354,
+    "H_FM_bits": 1.4754,
+    "normalized_I_over_HY": 0.5203,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5375,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 81,
+    "I_FM_Y_bits": 1.5046,
+    "H_Y_bits": 2.8308,
+    "H_FM_bits": 1.5046,
+    "normalized_I_over_HY": 0.5315,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.594,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 82,
+    "I_FM_Y_bits": 1.5347,
+    "H_Y_bits": 2.8322,
+    "H_FM_bits": 1.5347,
+    "normalized_I_over_HY": 0.5419,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5913,
+    "classes_seen_per_fm": {
+     "Virchow2": 3,
+     "Conch_v15": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 83,
+    "I_FM_Y_bits": 1.5264,
+    "H_Y_bits": 2.8343,
+    "H_FM_bits": 1.5264,
+    "normalized_I_over_HY": 0.5385,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5948,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 84,
+    "I_FM_Y_bits": 1.5685,
+    "H_Y_bits": 2.8299,
+    "H_FM_bits": 1.5685,
+    "normalized_I_over_HY": 0.5543,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5892,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 85,
+    "I_FM_Y_bits": 1.5046,
+    "H_Y_bits": 2.8319,
+    "H_FM_bits": 1.5046,
+    "normalized_I_over_HY": 0.5313,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5415,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   },
+   {
+    "seed": 86,
+    "I_FM_Y_bits": 1.5028,
+    "H_Y_bits": 2.8357,
+    "H_FM_bits": 1.5028,
+    "normalized_I_over_HY": 0.53,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5217,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 87,
+    "I_FM_Y_bits": 1.5004,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.5004,
+    "normalized_I_over_HY": 0.5288,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5998,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Virchow2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 88,
+    "I_FM_Y_bits": 1.3796,
+    "H_Y_bits": 2.8307,
+    "H_FM_bits": 1.3796,
+    "normalized_I_over_HY": 0.4874,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5345,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 89,
+    "I_FM_Y_bits": 1.4418,
+    "H_Y_bits": 2.8348,
+    "H_FM_bits": 1.4418,
+    "normalized_I_over_HY": 0.5086,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5232,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Virchow2": 3,
+     "Conch_v15": 3
+    }
+   },
+   {
+    "seed": 90,
+    "I_FM_Y_bits": 1.5285,
+    "H_Y_bits": 2.8373,
+    "H_FM_bits": 1.5285,
+    "normalized_I_over_HY": 0.5387,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5254,
+    "classes_seen_per_fm": {
+     "Conch_v15": 3,
+     "Virchow2": 3,
+     "UNI_v2": 3
+    }
+   },
+   {
+    "seed": 91,
+    "I_FM_Y_bits": 1.4688,
+    "H_Y_bits": 2.8374,
+    "H_FM_bits": 1.4688,
+    "normalized_I_over_HY": 0.5177,
+    "fm_only_macro_acc": 0.3333,
+    "fm_only_overall_acc": 0.5508,
+    "classes_seen_per_fm": {
+     "UNI_v2": 3,
+     "Conch_v15": 3,
+     "Virchow2": 3
+    }
+   }
+  ]
+ },
+ "summary": {
+  "balanced": {
+   "I_FM_Y_bits": {
+    "mean": 0.2093,
+    "std": 0.0651,
+    "min": 0.1179,
+    "max": 0.3826
+   },
+   "normalized_I_over_HY": {
+    "mean": 0.0738,
+    "std": 0.0229,
+    "min": 0.0417,
+    "max": 0.1349
+   },
+   "fm_only_macro_acc": {
+    "mean": 0.1495,
+    "std": 0.0243,
+    "min": 0.1111,
+    "max": 0.219
+   },
+   "fm_only_overall_acc": {
+    "mean": 0.3012,
+    "std": 0.0274,
+    "min": 0.2692,
+    "max": 0.3913
+   }
+  },
+  "stratified": {
+   "I_FM_Y_bits": {
+    "mean": 0.1211,
+    "std": 0.023,
+    "min": 0.0697,
+    "max": 0.1732
+   },
+   "normalized_I_over_HY": {
+    "mean": 0.0427,
+    "std": 0.0081,
+    "min": 0.0246,
+    "max": 0.0611
+   },
+   "fm_only_macro_acc": {
+    "mean": 0.1408,
+    "std": 0.0218,
+    "min": 0.1111,
+    "max": 0.1971
+   },
+   "fm_only_overall_acc": {
+    "mean": 0.2945,
+    "std": 0.0189,
+    "min": 0.2634,
+    "max": 0.3514
+   }
+  },
+  "cancer_correlated": {
+   "I_FM_Y_bits": {
+    "mean": 0.547,
+    "std": 0.1285,
+    "min": 0.2722,
+    "max": 0.7729
+   },
+   "normalized_I_over_HY": {
+    "mean": 0.193,
+    "std": 0.0454,
+    "min": 0.0961,
+    "max": 0.273
+   },
+   "fm_only_macro_acc": {
+    "mean": 0.2304,
+    "std": 0.0408,
+    "min": 0.1499,
+    "max": 0.2952
+   },
+   "fm_only_overall_acc": {
+    "mean": 0.3872,
+    "std": 0.0486,
+    "min": 0.2905,
+    "max": 0.4569
+   }
+  },
+  "adversarial": {
+   "I_FM_Y_bits": {
+    "mean": 1.4982,
+    "std": 0.053,
+    "min": 1.3796,
+    "max": 1.5831
+   },
+   "normalized_I_over_HY": {
+    "mean": 0.5286,
+    "std": 0.0187,
+    "min": 0.4874,
+    "max": 0.5571
+   },
+   "fm_only_macro_acc": {
+    "mean": 0.3333,
+    "std": 0.0,
+    "min": 0.3333,
+    "max": 0.3333
+   },
+   "fm_only_overall_acc": {
+    "mean": 0.562,
+    "std": 0.0314,
+    "min": 0.5194,
+    "max": 0.6094
+   }
+  }
+ },
+ "note": "I(FM;Y) over training slides (FM = which foundation model the slide's site holds; Y = 9-class label). fm_only = classifier that predicts the majority training class of the slide's FM group; macro accuracy on the global test set."
+}

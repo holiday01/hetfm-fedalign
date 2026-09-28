@@ -1,0 +1,72 @@
+{
+ "macro_acc": 0.41452630026324444,
+ "macro_f1": 0.3587509502616026,
+ "per_class_recall": [
+  0.9969512195121951,
+  0.8961748633879781,
+  0.0,
+  1.0,
+  0.7876106194690266,
+  0.05,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "primary_eval": "head",
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.41452630026324444,
+   "macro_f1": 0.3587509502616026
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "head_mode": "shared",
+ "lam_proto": 1.0,
+ "lam_con": 1.0,
+ "min_count": 8,
+ "seed": 82,
+ "device": "cuda",
+ "acc_proto": 0.6419814752508755,
+ "f1_proto": 0.6405628267168947,
+ "acc_head": 0.41452630026324444,
+ "f1_head": 0.3587509502616026,
+ "diag": {
+  "n_test": 1194,
+  "n_fm_groups": 1,
+  "silhouette_class": 0.07659764587879181,
+  "xfm_prototype_cosine_per_class": {},
+  "xfm_prototype_cosine": NaN,
+  "n_classes_with_xfm_cosine": 0,
+  "seconds": 0.05
+ },
+ "n_params": {
+  "projectors": {
+   "UNI_v2": 3145984,
+   "Conch_v15": 1573120,
+   "Virchow2": 5243136
+  },
+  "projectors_total": 9962240,
+  "head": 2313,
+  "prototypes_not_trainable": 2304
+ },
+ "timing": {
+  "load_s": 4.23,
+  "train_s": 57.69,
+  "per_round_s": 0.385,
+  "total_s": 61.98
+ },
+ "peak_gpu_mem_mb": 2895.8,
+ "_task": {
+  "name": "A_UNI_v2_linear",
+  "seed": 82,
+  "rounds": 150,
+  "worker": 0,
+  "host": "hai",
+  "wall_s": 62.07,
+  "finished": "2026-09-08T04:42:07"
+ }
+}

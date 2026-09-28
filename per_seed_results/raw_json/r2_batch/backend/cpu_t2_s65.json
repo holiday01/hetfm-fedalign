@@ -1,0 +1,59 @@
+{
+ "macro_acc": 0.7147755270566791,
+ "macro_f1": 0.7343898645709803,
+ "per_class_recall": [
+  0.9683544303797469,
+  0.7747252747252747,
+  0.7669172932330827,
+  1.0,
+  0.9528301886792453,
+  0.8350515463917526,
+  0.45454545454545453,
+  0.4583333333333333,
+  0.2222222222222222
+ ],
+ "primary_eval": "head",
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.7147755270566791,
+   "macro_f1": 0.7343898645709803
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "head_mode": "shared",
+ "lam_proto": 1.0,
+ "lam_con": 1.0,
+ "min_count": 8,
+ "seed": 65,
+ "device": "cpu",
+ "acc_proto": 0.6321336948318853,
+ "f1_proto": 0.6461101297952858,
+ "acc_head": 0.7147755270566791,
+ "f1_head": 0.7343898645709803,
+ "n_params": {
+  "projectors": {
+   "UNI_v2": 3145984,
+   "Conch_v15": 1573120,
+   "Virchow2": 5243136
+  },
+  "projectors_total": 9962240,
+  "head": 2313,
+  "prototypes_not_trainable": 2304
+ },
+ "timing": {
+  "load_s": 0.25,
+  "train_s": 240.8,
+  "per_round_s": 1.605,
+  "total_s": 241.19
+ },
+ "_task": {
+  "arm": "cpu_t2",
+  "threads": 2,
+  "seed": 65,
+  "wall_s": 241.3
+ }
+}

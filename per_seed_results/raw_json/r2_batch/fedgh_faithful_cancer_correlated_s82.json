@@ -1,0 +1,56 @@
+{
+ "macro_acc": 1.0,
+ "macro_f1": 1.0,
+ "per_class_recall": [
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0
+ ],
+ "cross_site_probe": {
+  "random_partner_acc": 0.29147813360076624,
+  "random_partner_same_class_frac": 0.2336448598130841,
+  "other_class_partner_acc": 0.0
+ },
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 1.0,
+   "macro_f1": 1.0
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "site",
+ "header_epochs": 5,
+ "header_lr": 0.001,
+ "min_count": 8,
+ "seed": 82,
+ "device": "cuda",
+ "mode": "fedgh_faithful",
+ "uploaded_means_per_round_mean": 97.0,
+ "n_params": {
+  "projectors_total": 348678912,
+  "n_projectors": 107,
+  "header": 2313
+ },
+ "timing": {
+  "total_s": 45.1
+ },
+ "peak_gpu_mem_mb": 3027.5,
+ "_task": {
+  "name": "fedgh_faithful_cancer_correlated",
+  "seed": 82,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 45.14,
+  "finished": "2026-09-08T04:57:58"
+ }
+}

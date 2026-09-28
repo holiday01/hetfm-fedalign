@@ -1,0 +1,82 @@
+{
+ "macro_acc": 0.6249699848524243,
+ "macro_f1": 0.6372545910472533,
+ "per_class_recall": [
+  0.9910979228486647,
+  0.7608695652173914,
+  0.5223880597014925,
+  0.8817204301075269,
+  0.6464646464646465,
+  0.8367346938775511,
+  0.5454545454545454,
+  0.44,
+  0.0
+ ],
+ "primary_eval": "prototype",
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.6249699848524243,
+   "macro_f1": 0.6372545910472533
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "head_mode": "none",
+ "lam_proto": 1.0,
+ "lam_con": 1.0,
+ "min_count": 8,
+ "seed": 67,
+ "device": "cuda",
+ "acc_proto": 0.6249699848524243,
+ "f1_proto": 0.6372545910472533,
+ "diag": {
+  "n_test": 1183,
+  "n_fm_groups": 3,
+  "silhouette_class": 0.2106839418411255,
+  "xfm_prototype_cosine_per_class": {
+   "0": 0.8430916666984558,
+   "1": 0.7306429743766785,
+   "2": 0.7523293495178223,
+   "3": 0.6060707569122314,
+   "4": 0.40470826625823975,
+   "5": 0.33243653178215027,
+   "6": 0.22559045255184174,
+   "7": 0.2645524740219116,
+   "8": 0.28136152029037476
+  },
+  "xfm_prototype_cosine": 0.49342044360107845,
+  "n_classes_with_xfm_cosine": 9,
+  "fm_probe_balanced_acc": 1.0,
+  "fm_probe_chance": 0.3333333333333333,
+  "seconds": 0.26
+ },
+ "n_params": {
+  "projectors": {
+   "UNI_v2": 3145984,
+   "Conch_v15": 1573120,
+   "Virchow2": 5243136
+  },
+  "projectors_total": 9962240,
+  "head": 0,
+  "prototypes_not_trainable": 2304
+ },
+ "timing": {
+  "load_s": 2.01,
+  "train_s": 61.93,
+  "per_round_s": 0.413,
+  "total_s": 64.22
+ },
+ "peak_gpu_mem_mb": 2138.0,
+ "_task": {
+  "name": "head_none_proto",
+  "seed": 67,
+  "rounds": 150,
+  "worker": 2,
+  "host": "hai",
+  "wall_s": 64.25,
+  "finished": "2026-09-08T00:36:54"
+ }
+}

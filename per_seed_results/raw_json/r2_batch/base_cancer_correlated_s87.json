@@ -1,0 +1,26 @@
+{
+ "zeropad": {
+  "macro_acc": 0.6051870933058583,
+  "macro_f1": 0.6079438903050556,
+  "total_s": 56.42
+ },
+ "localpca": {
+  "macro_acc": 0.1111111111111111,
+  "macro_f1": 0.049692172383465266,
+  "total_s": 14.9
+ },
+ "procrustes": {
+  "macro_acc": 0.22677341154245026,
+  "macro_f1": 0.18072748081919804,
+  "total_s": 14.35
+ },
+ "_task": {
+  "name": "base_cancer_correlated",
+  "seed": 87,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 85.71,
+  "finished": "2026-09-08T07:59:14"
+ }
+}

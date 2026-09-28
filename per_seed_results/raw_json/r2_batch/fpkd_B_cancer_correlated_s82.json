@@ -1,0 +1,25 @@
+{
+ "macro_acc": 0.32052029589614556,
+ "macro_f1": 0.22315789644113038,
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.32052029589614556,
+   "macro_f1": 0.22315789644113038
+  }
+ ],
+ "rounds": 150,
+ "mode": "fedprotokd_B_tuned_aggProj",
+ "timing": {
+  "total_s": 78.43
+ },
+ "_task": {
+  "name": "fpkd_B_cancer_correlated",
+  "seed": 82,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 78.46,
+  "finished": "2026-09-08T01:55:57"
+ }
+}

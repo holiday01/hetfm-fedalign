@@ -1,0 +1,130 @@
+{
+ "seed": 62,
+ "rounds": 150,
+ "gpu": "NVIDIA Graphics Device",
+ "torch": "2.10.0+cu128",
+ "arms": {
+  "method_linear_balanced": {
+   "total_s": 26.5,
+   "total_min": 0.44,
+   "train_s": 25.5,
+   "per_round_s": 0.17,
+   "peak_gpu_mem_mb": 2151.7,
+   "n_params": {
+    "projectors": {
+     "UNI_v2": 3145984,
+     "Conch_v15": 1573120,
+     "Virchow2": 5243136
+    },
+    "projectors_total": 9962240,
+    "head": 2313,
+    "prototypes_not_trainable": 2304
+   },
+   "macro_acc": 0.6501261088510835
+  },
+  "method_1hidden_balanced": {
+   "total_s": 36.9,
+   "total_min": 0.62,
+   "train_s": 36.0,
+   "per_round_s": 0.24,
+   "peak_gpu_mem_mb": 4100.0,
+   "n_params": {
+    "projectors": {
+     "UNI_v2": 6423296,
+     "Conch_v15": 3277568,
+     "Virchow2": 10617600
+    },
+    "projectors_total": 20318464,
+    "head": 2313,
+    "prototypes_not_trainable": 2304
+   },
+   "macro_acc": 0.5718448192684095
+  },
+  "abl_ce_only": {
+   "total_s": 25.0,
+   "total_min": 0.42,
+   "train_s": 24.5,
+   "per_round_s": 0.164,
+   "peak_gpu_mem_mb": 2151.7,
+   "n_params": {
+    "projectors": {
+     "UNI_v2": 3145984,
+     "Conch_v15": 1573120,
+     "Virchow2": 5243136
+    },
+    "projectors_total": 9962240,
+    "head": 2313,
+    "prototypes_not_trainable": 2304
+   },
+   "macro_acc": 0.7108926323108385
+  },
+  "plain_fedavg_Conch_v15": {
+   "total_s": 13.6,
+   "total_min": 0.23,
+   "train_s": 13.6,
+   "per_round_s": 0.09,
+   "peak_gpu_mem_mb": 1510.8,
+   "n_params": null,
+   "macro_acc": 0.46570767095242416
+  },
+  "fpkd_B_balanced": {
+   "total_s": 24.4,
+   "total_min": 0.41,
+   "train_s": 24.4,
+   "per_round_s": 0.163,
+   "peak_gpu_mem_mb": 2152.7,
+   "n_params": null,
+   "macro_acc": 0.33087044445679425
+  },
+  "fedgh_tied_balanced": {
+   "total_s": 19.6,
+   "total_min": 0.33,
+   "train_s": 19.6,
+   "per_round_s": 0.131,
+   "peak_gpu_mem_mb": 2150.9,
+   "n_params": {
+    "projectors_total": 9962240,
+    "n_projectors": 3,
+    "header": 2313
+   },
+   "macro_acc": 0.7487132946398816
+  },
+  "fedgh_faithful_balanced": {
+   "total_s": 20.3,
+   "total_min": 0.34,
+   "train_s": 20.3,
+   "per_round_s": 0.135,
+   "peak_gpu_mem_mb": 3060.9,
+   "n_params": {
+    "projectors_total": 353397504,
+    "n_projectors": 107,
+    "header": 2313
+   },
+   "macro_acc": 1.0
+  },
+  "zeropad": {
+   "total_s": 29.8,
+   "total_min": 0.5,
+   "train_s": 29.8,
+   "per_round_s": 0.198,
+   "peak_gpu_mem_mb": 5090.5,
+   "macro_acc": 0.47110203586963956
+  },
+  "localpca": {
+   "total_s": 12.7,
+   "total_min": 0.21,
+   "train_s": 12.7,
+   "per_round_s": 0.085,
+   "peak_gpu_mem_mb": 1063.2,
+   "macro_acc": 0.1146761734997029
+  },
+  "procrustes": {
+   "total_s": 14.2,
+   "total_min": 0.24,
+   "train_s": 14.2,
+   "per_round_s": 0.095,
+   "peak_gpu_mem_mb": 1063.2,
+   "macro_acc": 0.23327034556182932
+  }
+ }
+}

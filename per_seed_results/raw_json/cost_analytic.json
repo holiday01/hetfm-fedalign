@@ -1,0 +1,64 @@
+{
+ "protocol": {
+  "trainable_params_total": 9964553,
+  "projector_params": {
+   "UNI_v2": 3145984,
+   "Conch_v15": 1573120,
+   "Virchow2": 5243136
+  },
+  "head_params": 2313,
+  "prototype_floats": 2304,
+  "per_site_upload_MB": {
+   "UNI_v2": 12.59,
+   "Conch_v15": 6.3,
+   "Virchow2": 20.98
+  },
+  "per_site_download_MB": {
+   "UNI_v2": 12.6,
+   "Conch_v15": 6.31,
+   "Virchow2": 20.99
+  },
+  "per_round_total_up_MB": 1414.7,
+  "per_round_total_down_MB": 1415.6,
+  "total_150_rounds_GB": 424.54
+ },
+ "protocol_1hidden": {
+  "trainable_params_total": 20320777,
+  "projector_params": {
+   "UNI_v2": 6423296,
+   "Conch_v15": 3277568,
+   "Virchow2": 10617600
+  }
+ },
+ "zeropad_fedavg": {
+  "trainable_params_total": 10490889,
+  "per_site_each_direction_MB": 41.96,
+  "per_round_total_up_MB": 4490.1,
+  "total_150_rounds_GB": 1347.03
+ },
+ "pca_or_procrustes_fedavg": {
+  "trainable_params_total": 136201,
+  "per_site_each_direction_MB": 0.545,
+  "total_150_rounds_GB": 17.488,
+  "note": "plus one-off PCA basis (d x k) per model and anchors for Procrustes"
+ },
+ "plain_fedavg_conch": {
+  "trainable_params_total": 3150857,
+  "per_site_each_direction_MB": 12.6,
+  "total_150_rounds_GB": 404.57
+ },
+ "fedprotokd_B": {
+  "trainable_params_total": 10209731,
+  "communicated_note": "projector up/down + class means up + prototypes down; heads local",
+  "total_150_rounds_GB": 424.24
+ },
+ "fedgh_tied": {
+  "trainable_params_total": 9964553,
+  "total_150_rounds_GB": 424.24
+ },
+ "fedgh_faithful": {
+  "trainable_params_total": 353399817,
+  "total_150_rounds_GB": 0.165,
+  "note": "only class means up and header down; degenerate here"
+ }
+}

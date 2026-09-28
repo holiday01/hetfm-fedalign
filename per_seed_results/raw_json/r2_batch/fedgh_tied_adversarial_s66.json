@@ -1,0 +1,52 @@
+{
+ "macro_acc": 0.891612461435461,
+ "macro_f1": 0.9056556514536364,
+ "per_class_recall": [
+  0.9942363112391931,
+  1.0,
+  1.0,
+  0.9900497512437811,
+  1.0,
+  0.9489795918367347,
+  0.875,
+  0.9019607843137255,
+  0.3142857142857143
+ ],
+ "cross_site_probe": {},
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.891612461435461,
+   "macro_f1": 0.9056556514536364
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "header_epochs": 5,
+ "header_lr": 0.001,
+ "min_count": 8,
+ "seed": 66,
+ "device": "cuda",
+ "mode": "fedgh_tied",
+ "uploaded_means_per_round_mean": 98.0,
+ "n_params": {
+  "projectors_total": 9962240,
+  "n_projectors": 3,
+  "header": 2313
+ },
+ "timing": {
+  "total_s": 38.5
+ },
+ "peak_gpu_mem_mb": 2197.4,
+ "_task": {
+  "name": "fedgh_tied_adversarial",
+  "seed": 66,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 38.52,
+  "finished": "2026-09-08T03:30:29"
+ }
+}

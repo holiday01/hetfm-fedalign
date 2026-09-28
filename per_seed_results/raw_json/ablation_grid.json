@@ -1,0 +1,272 @@
+{
+  "_meta": {
+    "default": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "rounds": 150,
+    "scheme": "balanced"
+  },
+  "default": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.6045,
+      "std": 0.0391,
+      "per_seed": [
+        0.627,
+        0.6596,
+        0.5463,
+        0.611,
+        0.5787
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.6089,
+      "std": 0.0483
+    }
+  },
+  "k=64": {
+    "params": {
+      "k": 64,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.615,
+      "std": 0.0304,
+      "per_seed": [
+        0.5621,
+        0.6225,
+        0.6037,
+        0.6462,
+        0.6406
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.6111,
+      "std": 0.0398
+    }
+  },
+  "k=128": {
+    "params": {
+      "k": 128,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.5995,
+      "std": 0.0353,
+      "per_seed": [
+        0.5574,
+        0.5956,
+        0.5848,
+        0.6645,
+        0.5951
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.5947,
+      "std": 0.0422
+    }
+  },
+  "k=512": {
+    "params": {
+      "k": 512,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.6181,
+      "std": 0.0267,
+      "per_seed": [
+        0.6186,
+        0.594,
+        0.6137,
+        0.668,
+        0.5962
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.6149,
+      "std": 0.0242
+    }
+  },
+  "depth=linear": {
+    "params": {
+      "k": 256,
+      "depth": "linear",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.6983,
+      "std": 0.0422,
+      "per_seed": [
+        0.7286,
+        0.6285,
+        0.6779,
+        0.7497,
+        0.7066
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.7169,
+      "std": 0.0501
+    }
+  },
+  "depth=2hidden": {
+    "params": {
+      "k": 256,
+      "depth": "2hidden",
+      "lam_proto": 1.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.5332,
+      "std": 0.0259,
+      "per_seed": [
+        0.5409,
+        0.503,
+        0.5233,
+        0.5791,
+        0.5197
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.5192,
+      "std": 0.0285
+    }
+  },
+  "lam_proto=0.0": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 0.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.6051,
+      "std": 0.0285,
+      "per_seed": [
+        0.612,
+        0.6246,
+        0.5545,
+        0.6369,
+        0.5973
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.6005,
+      "std": 0.0391
+    }
+  },
+  "lam_proto=0.1": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 0.1,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.615,
+      "std": 0.0297,
+      "per_seed": [
+        0.5616,
+        0.6313,
+        0.6076,
+        0.6486,
+        0.6258
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.6152,
+      "std": 0.0269
+    }
+  },
+  "lam_proto=10.0": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 10.0,
+      "lam_con": 1.0
+    },
+    "macro_acc": {
+      "mean": 0.5896,
+      "std": 0.028,
+      "per_seed": [
+        0.5821,
+        0.6192,
+        0.5873,
+        0.617,
+        0.5422
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.5871,
+      "std": 0.0321
+    }
+  },
+  "lam_con=0.0": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 0.0
+    },
+    "macro_acc": {
+      "mean": 0.5382,
+      "std": 0.038,
+      "per_seed": [
+        0.4925,
+        0.5085,
+        0.5369,
+        0.602,
+        0.5514
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.5356,
+      "std": 0.041
+    }
+  },
+  "lam_con=0.1": {
+    "params": {
+      "k": 256,
+      "depth": "1hidden",
+      "lam_proto": 1.0,
+      "lam_con": 0.1
+    },
+    "macro_acc": {
+      "mean": 0.558,
+      "std": 0.04,
+      "per_seed": [
+        0.4971,
+        0.568,
+        0.536,
+        0.6173,
+        0.5716
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.5643,
+      "std": 0.0407
+    }
+  }
+}

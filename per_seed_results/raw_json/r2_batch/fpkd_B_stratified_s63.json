@@ -1,0 +1,25 @@
+{
+ "macro_acc": 0.24094807382915928,
+ "macro_f1": 0.1516482730785853,
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.24094807382915928,
+   "macro_f1": 0.1516482730785853
+  }
+ ],
+ "rounds": 150,
+ "mode": "fedprotokd_B_tuned_aggProj",
+ "timing": {
+  "total_s": 81.23
+ },
+ "_task": {
+  "name": "fpkd_B_stratified",
+  "seed": 63,
+  "rounds": 150,
+  "worker": 0,
+  "host": "hai",
+  "wall_s": 81.27,
+  "finished": "2026-09-08T00:14:38"
+ }
+}

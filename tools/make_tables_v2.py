@@ -1,7 +1,12 @@
 """LaTeX table bodies from results/r2_summary.json and the
 frozen analysis files.  Nothing hand-typed.  Writes <out-dir>/tables/*.tex
 (main text) and supp_*.tex (supplement).
-Missing arms render as '--' so the document builds while the batch runs."""
+Missing arms render as '--' so the document builds while the batch runs.
+Wilcoxon p-values are recomputed exactly from the per-seed values (the
+summary stores three significant figures, and printing that to two would
+round twice); Tables 6 and 7 carry a Holm-adjusted p column over the
+comparisons of each table; Table 7 includes the three head settings under a
+common nearest-prototype rule."""
 import json, math, shutil
 from pathlib import Path
 import numpy as np
@@ -42,7 +47,44 @@ def pval(c):
     if not c or c.get("wilcoxon_p") is None: return NA
     p = c["wilcoxon_p"]
     if p < 1e-4: return "$<10^{-4}$"
-    return f"${p:.2g}$" if p < 0.1 else f"${p:.2f}$"      # two significant figures below 0.1 (0.055, not 0.05)
+    return f"${p:#.2g}$" if p < 0.1 else f"${p:.2f}$"     # two significant figures below 0.1, trailing zero kept (0.070, not 0.07)
+# ---- exact Wilcoxon p-values from the per-seed values (six decimals, as in the summary) --------
+from scipy import stats as _wst
+def _ps(n, sub=None):
+    if sub is None: return dict(zip(A[n]["seeds"], A[n]["macro_acc"]["per_seed"]))
+    return dict(zip(SEEDS, A[n][sub]["macro_acc"]["per_seed"]))          # base_* arms: all thirty seeds
+def _arms_of(key):
+    if key == "method_1hidden_minus_A_1hidden": return ("method_1hidden_balanced", None), ("A_Conch_v15_1hidden", None)
+    a, b = key.split("_minus_", 1)
+    if b in ("zeropad", "localpca", "procrustes"): return (a, None), ("base_" + a.replace("method_linear_", ""), b)
+    return (a, None), (b, None)
+for _k, _c in CON.items():
+    if _c.get("wilcoxon_p") is None: continue
+    (_a, _sa), (_b, _sb) = _arms_of(_k); _da, _db = _ps(_a, _sa), _ps(_b, _sb)
+    _cm = [x for x in SEEDS if x in _da and x in _db]
+    _c["wilcoxon_p"] = float(_wst.wilcoxon([_da[x] for x in _cm], [_db[x] for x in _cm]).pvalue)
+def paired6(a, b):
+    """Same statistics as run_r2_batch._paired, for per-seed lists a, b (paired by position)."""
+    import statistics as _s
+    d = [x - y for x, y in zip(a, b)]; rng = np.random.default_rng(0); arr = np.asarray(d)
+    means = rng.choice(arr, size=(10000, arr.size), replace=True).mean(axis=1)
+    return {"n": len(d), "mean_diff": round(_s.mean(d), 6), "n_a_gt_b": f"{sum(1 for x in d if x > 0)}/{len(d)}",
+            "boot_ci95": [round(float(np.percentile(means, 2.5)), 6), round(float(np.percentile(means, 97.5)), 6)],
+            "wilcoxon_p": float(_wst.wilcoxon(a, b).pvalue)}
+def raw6(arm, key):
+    """per-seed values of a raw-file field, rounded to six decimals like the summary, keyed by seed"""
+    return {x: round(jload(arm, x)[key], 6) for x in SEEDS if jload(arm, x) and jload(arm, x).get(key) is not None}
+def pm_raw(arm, key, d=3):
+    import statistics as _s
+    v = list(raw6(arm, key).values()); return f"${_s.mean(v):.{d}f}\\pm{_s.pstdev(v):.{d}f}$" if v else NA
+def holm(ps):
+    order = sorted(range(len(ps)), key=lambda i: ps[i]); adj = [0.0] * len(ps); run = 0.0
+    for r, i in enumerate(order):
+        run = max(run, min(1.0, (len(ps) - r) * ps[i])); adj[i] = run
+    return adj
+def ptex(p):
+    return "$<10^{-4}$" if p < 1e-4 else (f"${p:#.2g}$" if p < 0.1 else f"${p:.2f}$")
+HOLM = {}                                                    # contrast label -> Holm-adjusted p within its table
 def rows_write(name, rows):
     (OUT / name).write_text("\n".join(rows) + "\n"); print("wrote", OUT / name, len(rows), "rows")
 def jload(name, seed):
@@ -65,48 +107,70 @@ rows.append("Protocol (reference), macro-F1 & " + sch(lambda sc: pm(f"method_lin
 rows.append("Reference $-$ CONCH control [95\\% CI] & " + sch(lambda sc: dci(CON.get(f"method_linear_{sc}_minus_A_Conch_v15_linear"))) + " \\\\")
 rows_write("tab_main.tex", rows)
 
-# ---- controls table (balanced) -----------------------------------------------------------
-m = "method_linear_balanced"; rows = []
-def crow(label, arm, key):
-    c = CON.get(key); return f"{label} & {pm(arm)} & {dci(c)} & {seeds_of(c)} & {pval(c)} \\\\"
-rows.append(crow("CONCH, one linear projector shared by all sites (submitted control)", "A_Conch_v15_linear", f"{m}_minus_A_Conch_v15_linear"))
-rows.append(crow("CONCH, three group-tied linear projectors ($4.72$\\,M projector parameters)", "A_Conch_v15_3group_linear", f"{m}_minus_A_Conch_v15_3group_linear"))
-rows.append(crow("UNI v2, one linear projector", "A_UNI_v2_linear", f"{m}_minus_A_UNI_v2_linear"))
-rows.append(crow("UNI v2, three group-tied linear projectors ($9.44$\\,M)", "A_UNI_v2_3group_linear", f"{m}_minus_A_UNI_v2_3group_linear"))
-rows.append(crow("Virchow2, one linear projector", "A_Virchow2_linear", f"{m}_minus_A_Virchow2_linear"))
-rows.append(crow("Virchow2, three group-tied linear projectors ($15.73$\\,M)", "A_Virchow2_3group_linear", f"{m}_minus_A_Virchow2_3group_linear"))
-rows.append(crow("Plain FedAvg, CONCH, two-layer head, no projector", "plain_fedavg_Conch_v15", f"{m}_minus_plain_fedavg_Conch_v15"))
-c = CON.get("abl_ce_only_minus_A_Conch_v15_ce_only")
-rows.append(f"CONCH, one projector, cross-entropy only (vs.\\ cross-entropy-only protocol {pm('abl_ce_only')}) & {pm('A_Conch_v15_ce_only')} & {dci(c)} & {seeds_of(c)} & {pval(c)} \\\\")
-c = CON.get("abl_ce_only_minus_A_Conch_v15_3group_ce_only")
-rows.append(f"CONCH, three group-tied projectors, cross-entropy only (vs.\\ cross-entropy-only protocol) & {pm('A_Conch_v15_3group_ce_only')} & {dci(c)} & {seeds_of(c)} & {pval(c)} \\\\")
-c = CON.get("method_1hidden_minus_A_1hidden")
-rows.append(f"CONCH, one one-hidden-layer projector (vs.\\ one-hidden-layer protocol {pm('method_1hidden_balanced')}) & {pm('A_Conch_v15_1hidden')} & {dci(c)} & {seeds_of(c)} & {pval(c)} \\\\")
+# ---- controls table (balanced): exploratory, p unadjusted + Holm over the ten comparisons ---------
+m = "method_linear_balanced"
+ctl = [("CONCH, one linear projector shared by all sites (pre-specified control)", "A_Conch_v15_linear", f"{m}_minus_A_Conch_v15_linear"),
+       ("CONCH, three group-tied linear projectors ($4.72$\\,M projector parameters)", "A_Conch_v15_3group_linear", f"{m}_minus_A_Conch_v15_3group_linear"),
+       ("UNI v2, one linear projector", "A_UNI_v2_linear", f"{m}_minus_A_UNI_v2_linear"),
+       ("UNI v2, three group-tied linear projectors ($9.44$\\,M)", "A_UNI_v2_3group_linear", f"{m}_minus_A_UNI_v2_3group_linear"),
+       ("Virchow2, one linear projector", "A_Virchow2_linear", f"{m}_minus_A_Virchow2_linear"),
+       ("Virchow2, three group-tied linear projectors ($15.73$\\,M)", "A_Virchow2_3group_linear", f"{m}_minus_A_Virchow2_3group_linear"),
+       ("Plain FedAvg, CONCH, two-layer head, no projector", "plain_fedavg_Conch_v15", f"{m}_minus_plain_fedavg_Conch_v15"),
+       (f"CONCH, one projector, cross-entropy only (vs.\\ cross-entropy-only protocol {pm('abl_ce_only')})", "A_Conch_v15_ce_only", "abl_ce_only_minus_A_Conch_v15_ce_only"),
+       ("CONCH, three group-tied projectors, cross-entropy only (vs.\\ cross-entropy-only protocol)", "A_Conch_v15_3group_ce_only", "abl_ce_only_minus_A_Conch_v15_3group_ce_only"),
+       (f"CONCH, one one-hidden-layer projector (vs.\\ one-hidden-layer protocol {pm('method_1hidden_balanced')})", "A_Conch_v15_1hidden", "method_1hidden_minus_A_1hidden")]
+_h = holm([CON[k]["wilcoxon_p"] for _, _, k in ctl])
+rows = []
+for (label, arm, key), h in zip(ctl, _h):
+    c = CON[key]; HOLM[key] = h
+    rows.append(f"{label} & {pm(arm)} & {dci(c)} & {seeds_of(c)} & {pval(c)} & {ptex(h)} \\\\")
 rows_write("tab_controls.tex", rows)
 
-# ---- ablation table (balanced) --------------------------------------------------------------
-rows = []
-def arow(label, arm):
-    c = CON.get(f"{m}_minus_{arm}")   # method minus variant -> flip sign for variant minus full
-    return f"{label} & {pm(arm)} & {pm(arm, 'macro_f1')} & {dci(c, -1)} & {seeds_of(c, -1)} & {pval(c)} \\\\"
-rows.append(f"Full reference protocol (CE + matching + contrastive, averaged head, linear) & {pm(m)} & {pm(m, 'macro_f1')} & -- & -- & -- \\\\")
-rows.append("\\multicolumn{6}{l}{\\emph{Loss terms (averaged head, linear projector)}} \\\\")
-rows.append(arow("Cross-entropy only (no anchor terms)", "abl_ce_only"))
-rows.append(arow("Cross-entropy + prototype matching", "abl_ce_proto"))
-rows.append(arow("Cross-entropy + contrastive", "abl_ce_con"))
-rows.append("\\multicolumn{6}{l}{\\emph{Classifier head (linear projector, both prototype terms kept; scored by nearest global prototype)}} \\\\")
-rows.append(arow("No head (no cross-entropy term): nearest global prototype", "head_none_proto"))
-rows.append(arow("Local heads, never averaged; nearest-prototype inference", "head_local"))
-rows.append("\\multicolumn{6}{l}{\\emph{Head-training rule (linear projector, no anchor terms)}} \\\\")
-rows.append(arow("Head trained at the server on uploaded class means (tied FedGH)", "fedgh_tied_balanced"))
-rows.append("\\multicolumn{6}{l}{\\emph{Projector depth (all terms, averaged head)}} \\\\")
-rows.append(arow("One hidden layer", "method_1hidden_balanced"))
-rows.append(arow("Two hidden layers", "method_2hidden_balanced"))
-rows.append("\\multicolumn{6}{l}{\\emph{Loss terms with the one-hidden-layer projector (differences versus the one-hidden-layer full protocol)}} \\\\")
-for lab, arm in [("One hidden layer, cross-entropy only", "abl_ce_only_1hidden_balanced"),
-                 ("One hidden layer, cross-entropy + contrastive", "abl_ce_con_1hidden_balanced")]:
-    c1 = CON.get(f"method_1hidden_balanced_minus_{arm}")
-    rows.append(f"{lab} & {pm(arm)} & {pm(arm, 'macro_f1')} & {dci(c1, -1)} & {seeds_of(c1, -1)} & {pval(c1)} \\\\")
+# ---- ablation table (balanced): exploratory, p unadjusted + Holm over the twelve comparisons ------
+# The common-rule block scores the full protocol, the local heads and the no-head variant all by
+# nearest global prototype, so its differences isolate the training change from the inference change.
+np_full = raw6(m, "acc_proto"); np_loc = raw6("head_local", "acc_proto"); np_non = raw6("head_none_proto", "acc_proto")
+NP = {"local_minus_shared": paired6([np_loc[x] for x in SEEDS], [np_full[x] for x in SEEDS]),
+      "none_minus_shared": paired6([np_non[x] for x in SEEDS], [np_full[x] for x in SEEDS]),
+      "none_minus_local": paired6([np_non[x] for x in SEEDS], [np_loc[x] for x in SEEDS])}
+abl = [("Cross-entropy only (no anchor terms)", "abl_ce_only", CON[f"{m}_minus_abl_ce_only"], -1),
+       ("Cross-entropy + prototype matching", "abl_ce_proto", CON[f"{m}_minus_abl_ce_proto"], -1),
+       ("Cross-entropy + contrastive", "abl_ce_con", CON[f"{m}_minus_abl_ce_con"], -1),
+       ("No head (no cross-entropy term): nearest global prototype", "head_none_proto", CON[f"{m}_minus_head_none_proto"], -1),
+       ("Local heads, never averaged; nearest-prototype inference", "head_local", CON[f"{m}_minus_head_local"], -1),
+       ("Local heads, never averaged", "head_local", NP["local_minus_shared"], +1),
+       ("No head (no cross-entropy term)", "head_none_proto", NP["none_minus_shared"], +1),
+       ("Head trained at the server on uploaded class means (tied FedGH)", "fedgh_tied_balanced", CON[f"{m}_minus_fedgh_tied_balanced"], -1),
+       ("One hidden layer", "method_1hidden_balanced", CON[f"{m}_minus_method_1hidden_balanced"], -1),
+       ("Two hidden layers", "method_2hidden_balanced", CON[f"{m}_minus_method_2hidden_balanced"], -1),
+       ("One hidden layer, cross-entropy only", "abl_ce_only_1hidden_balanced", CON["method_1hidden_balanced_minus_abl_ce_only_1hidden_balanced"], -1),
+       ("One hidden layer, cross-entropy + contrastive", "abl_ce_con_1hidden_balanced", CON["method_1hidden_balanced_minus_abl_ce_con_1hidden_balanced"], -1)]
+_h = holm([c["wilcoxon_p"] for _, _, c, _ in abl])
+cells = {}
+for (label, arm, c, sg), h in zip(abl, _h):
+    cells[label + "|" + arm + "|" + str(sg)] = f"{label} & {pm(arm)} & {pm(arm, 'macro_f1')} & {dci(c, sg)} & {seeds_of(c, sg)} & {pval(c)} & {ptex(h)} \\\\"
+    HOLM["abl:" + arm + ("" if sg < 0 else ":np")] = h
+def cell(label, arm, sg=-1): return cells[label + "|" + arm + "|" + str(sg)]
+rows = [f"Full reference protocol (CE + matching + contrastive, averaged head, linear) & {pm(m)} & {pm(m, 'macro_f1')} & -- & -- & -- & -- \\\\",
+        "\\multicolumn{7}{l}{\\emph{Loss terms (averaged head, linear projector)}} \\\\",
+        cell("Cross-entropy only (no anchor terms)", "abl_ce_only"),
+        cell("Cross-entropy + prototype matching", "abl_ce_proto"),
+        cell("Cross-entropy + contrastive", "abl_ce_con"),
+        "\\multicolumn{7}{l}{\\emph{Classifier head (linear projector, both prototype terms kept; scored by nearest global prototype)}} \\\\",
+        cell("No head (no cross-entropy term): nearest global prototype", "head_none_proto"),
+        cell("Local heads, never averaged; nearest-prototype inference", "head_local"),
+        "\\multicolumn{7}{l}{\\emph{Common nearest-prototype rule (all three head settings; differences versus the full protocol under the same rule)}} \\\\",
+        f"Shared averaged head (full protocol) & {pm_raw(m, 'acc_proto')} & {pm_raw(m, 'f1_proto')} & -- & -- & -- & -- \\\\",
+        cell("Local heads, never averaged", "head_local", +1),
+        cell("No head (no cross-entropy term)", "head_none_proto", +1),
+        "\\multicolumn{7}{l}{\\emph{Head-training rule (linear projector, no anchor terms)}} \\\\",
+        cell("Head trained at the server on uploaded class means (tied FedGH)", "fedgh_tied_balanced"),
+        "\\multicolumn{7}{l}{\\emph{Projector depth (all terms, averaged head)}} \\\\",
+        cell("One hidden layer", "method_1hidden_balanced"),
+        cell("Two hidden layers", "method_2hidden_balanced"),
+        "\\multicolumn{7}{l}{\\emph{Loss terms with the one-hidden-layer projector (differences versus the one-hidden-layer full protocol)}} \\\\",
+        cell("One hidden layer, cross-entropy only", "abl_ce_only_1hidden_balanced"),
+        cell("One hidden layer, cross-entropy + contrastive", "abl_ce_con_1hidden_balanced")]
 rows_write("tab_ablation.tex", rows)
 
 # ---- inference-rule table: shared head versus nearest global prototype ----
@@ -192,7 +256,7 @@ for sc in ORDER:
     mm = f"method_linear_{sc}"; bn = f"base_{sc}"
     best = NA; bval = NA
     if bn in A:
-        bl = A[bn]; bname = max(bl, key=lambda b: bl[b]["macro_acc"]["mean"]); best = bname; bval = f"${bl[bname]['macro_acc']['mean']:.3f}$"
+        bl = A[bn]; bname = max(bl, key=lambda b: bl[b]["macro_acc"]["mean"]); best = {"zeropad": "zero-padding", "localpca": "per-model PCA", "procrustes": "PCA + Procrustes"}[bname]; bval = f"${bl[bname]['macro_acc']['mean']:.3f}$"
         cb = CON.get(f"{mm}_minus_{bname}")
     c = CON.get(f"{mm}_minus_A_Conch_v15_linear")
     rows.append(f"{DISP[sc]} & {pm(mm)} & {best} ({bval}) & {dci(c)} & {pval(c)} ({seeds_of(c)}) \\\\")
@@ -202,7 +266,7 @@ rows_write("supp_S4_scheme.tex", rows)
 from scipy import stats
 names = ['BRCA', 'COAD', 'STAD', 'LGG', 'LUAD', 'HNSC', 'SKCM', 'CESC', 'PAAD']
 def pfmt(h):
-    return "$<10^{-4}$" if h < 1e-4 else (f"${h:.2g}$" if h < 0.1 else f"${h:.2f}$")
+    return "$<10^{-4}$" if h < 1e-4 else (f"${h:#.2g}$" if h < 0.1 else f"${h:.2f}$")
 def perclass_rows(Mm, Aa):
     ps, rws = [], []
     rng = np.random.default_rng(0)
@@ -265,7 +329,7 @@ for ctrl_arm, fname in [("A_Virchow2_linear", "supp_S8_perclass_virchow1.tex"), 
 bk = R / "r2_batch" / "backend"; rows = []
 if bk.exists():
     gpu = {s: jload("method_linear_balanced", s)["macro_acc"] for s in [62, 63, 64, 65, 66] if jload("method_linear_balanced", s)}
-    for arm, lab in [("cpu_t24", "CPU (24 threads) vs GPU, same seed, $m=8$"), ("cpu_t2", "CPU (2 threads) vs GPU, same seed, $m=8$")]:
+    for arm, lab in [("cpu_t24", "CPU (24 threads) vs.\\ GPU, same seed, $m=8$"), ("cpu_t2", "CPU (2 threads) vs.\\ GPU, same seed, $m=8$")]:
         d = [json.loads((bk / f"{arm}_s{s}.json").read_text())["macro_acc"] - gpu[s] for s in gpu if (bk / f"{arm}_s{s}.json").exists()]
         if d:
             d = np.array(d)
@@ -341,6 +405,20 @@ for tag, key in [("RefMinusUniThree", "method_linear_balanced_minus_A_UNI_v2_3gr
     lines.append(mac(tag + "D", dv(key))); lines.append(mac(tag + "CI", civ(key))); lines.append(mac(tag + "P", pv(key))); lines.append(mac(tag + "S", sv(key)))
 _c = CON.get("method_linear_balanced_minus_A_Virchow2_3group_linear")
 lines.append(mac("VirchowThreeMinusRef", f"{-_c['mean_diff']:.3f}" if _c else TBD))
+for tag, key in [("UniThreeMinusConchThree", "A_UNI_v2_3group_linear_minus_A_Conch_v15_3group_linear")]:
+    lines.append(mac(tag + "D", dv(key))); lines.append(mac(tag + "CI", civ(key))); lines.append(mac(tag + "P", pv(key))); lines.append(mac(tag + "S", sv(key)))
+for tag, key in [("NpLocalMinusShared", "local_minus_shared"), ("NpNoneMinusShared", "none_minus_shared"), ("NpNoneMinusLocal", "none_minus_local")]:
+    c = NP[key]
+    lines.append(mac(tag + "D", f"{c['mean_diff']:+.3f}")); lines.append(mac(tag + "CI", f"[{c['boot_ci95'][0]:+.3f},{c['boot_ci95'][1]:+.3f}]"))
+    lines.append(mac(tag + "P", pval(c).strip("$"))); lines.append(mac(tag + "S", seeds_of(c)))
+lines.append(mac("NpSharedAcc", pm_raw(m, "acc_proto")))
+for tag, key in [("HolmRefMinusUniThree", f"{m}_minus_A_UNI_v2_3group_linear"),
+                 ("HolmCeOnlyMinusConchThreeCe", "abl_ce_only_minus_A_Conch_v15_3group_ce_only"),
+                 ("HolmOneHiddenPair", "method_1hidden_minus_A_1hidden"),
+                 ("HolmRefMinusVirchowThree", f"{m}_minus_A_Virchow2_3group_linear"),
+                 ("HolmLocalHeads", "abl:head_local"), ("HolmCeCon", "abl:abl_ce_con"), ("HolmCeOnly", "abl:abl_ce_only"),
+                 ("HolmNpLocal", "abl:head_local:np"), ("HolmNpNone", "abl:head_none_proto:np")]:
+    lines.append(mac(tag, ptex(HOLM[key]).strip("$")))
 (OUT / "numbers.tex").write_text("\n".join(lines) + "\n"); print("wrote", OUT / "numbers.tex", len(lines), "macros")
 
 # ---- copy into the build directory -------------------------------------------------------------------

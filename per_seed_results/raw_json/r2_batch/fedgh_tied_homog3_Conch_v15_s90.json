@@ -1,0 +1,52 @@
+{
+ "macro_acc": 0.7017870111469766,
+ "macro_f1": 0.7178175585259695,
+ "per_class_recall": [
+  0.975609756097561,
+  0.7231638418079096,
+  0.6666666666666666,
+  1.0,
+  0.9622641509433962,
+  0.8673469387755102,
+  0.7321428571428571,
+  0.16666666666666666,
+  0.2222222222222222
+ ],
+ "cross_site_probe": {},
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.7017870111469766,
+   "macro_f1": 0.7178175585259695
+  }
+ ],
+ "rounds": 150,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "header_epochs": 5,
+ "header_lr": 0.001,
+ "min_count": 8,
+ "seed": 90,
+ "device": "cuda",
+ "mode": "fedgh_tied",
+ "uploaded_means_per_round_mean": 100.0,
+ "n_params": {
+  "projectors_total": 4719360,
+  "n_projectors": 3,
+  "header": 2313
+ },
+ "timing": {
+  "total_s": 30.87
+ },
+ "peak_gpu_mem_mb": 1030.7,
+ "_task": {
+  "name": "fedgh_tied_homog3_Conch_v15",
+  "seed": 90,
+  "rounds": 150,
+  "worker": 0,
+  "host": "hai",
+  "wall_s": 30.89,
+  "finished": "2026-09-15T02:06:01"
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "macro_acc": 0.8587700076254339,
+ "macro_f1": 0.8769952375835005,
+ "per_class_recall": [
+  0.972809667673716,
+  0.7932960893854749,
+  0.6693548387096774,
+  1.0,
+  0.9908256880733946,
+  0.9795918367346939,
+  0.8909090909090909,
+  0.8571428571428571,
+  0.575
+ ],
+ "cross_site_probe": {},
+ "history": [
+  {
+   "round": 450,
+   "macro_acc": 0.8587700076254339,
+   "macro_f1": 0.8769952375835005
+  }
+ ],
+ "rounds": 450,
+ "k": 256,
+ "depth": "linear",
+ "tie": "fm",
+ "header_epochs": 5,
+ "header_lr": 0.001,
+ "min_count": 8,
+ "seed": 63,
+ "device": "cuda",
+ "mode": "fedgh_tied",
+ "uploaded_means_per_round_mean": 98.0,
+ "n_params": {
+  "projectors_total": 9962240,
+  "n_projectors": 3,
+  "header": 2313
+ },
+ "timing": {
+  "total_s": 53.39
+ },
+ "peak_gpu_mem_mb": 2391.3,
+ "_task": {
+  "name": "fedgh_tied_balanced_r450",
+  "seed": 63,
+  "rounds": 150,
+  "worker": 0,
+  "host": "hai",
+  "wall_s": 53.41,
+  "finished": "2026-09-08T08:17:52"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "zeropad": {
+  "macro_acc": 0.5571322536600314,
+  "macro_f1": 0.5408942316980669,
+  "total_s": 30.32
+ },
+ "localpca": {
+  "macro_acc": 0.12252252252252253,
+  "macro_f1": 0.07017456524624982,
+  "total_s": 13.96
+ },
+ "procrustes": {
+  "macro_acc": 0.12252252252252253,
+  "macro_f1": 0.07017456524624982,
+  "total_s": 13.53
+ },
+ "_task": {
+  "name": "base_adversarial",
+  "seed": 91,
+  "rounds": 150,
+  "worker": 0,
+  "host": "hai",
+  "wall_s": 57.84,
+  "finished": "2026-09-08T08:13:51"
+ }
+}

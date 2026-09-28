@@ -1,0 +1,30 @@
+{
+ "macro_acc": null,
+ "macro_f1": null,
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.9127628964843097,
+   "macro_f1": 0.9091882533153187
+  }
+ ],
+ "rounds": 150,
+ "mode": "fedprotokd_A_faithful",
+ "degeneracy": {
+  "head_selfeval_per_site": 0.5193,
+  "proto_per_site_routed": 0.9128,
+  "note": "Under 107/107 single-class-per-site there is no valid global classifier: per-site-routed nearest-prototype is ~0.91-0.94 \u2014 near-constant across schemes/seeds and 0.3-0.6 ABOVE the same method's non-degenerate eval (variant B) \u2014 a pure routing artifact; meanwhile the per-site head itself is weak (~0.40, KD destabilises it). Faithful FedProtoKD has NO usable global classifier here. Qualitative finding; the fair number is variant B (aggregate_projector=True)."
+ },
+ "timing": {
+  "total_s": 38.76
+ },
+ "_task": {
+  "name": "fpkd_A_balanced",
+  "seed": 84,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 38.79,
+  "finished": "2026-09-15T01:51:33"
+ }
+}

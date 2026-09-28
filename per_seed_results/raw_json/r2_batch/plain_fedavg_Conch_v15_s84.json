@@ -1,0 +1,25 @@
+{
+ "macro_acc": 0.43772520526906494,
+ "macro_f1": 0.41510514630331097,
+ "history": [
+  {
+   "round": 150,
+   "macro_acc": 0.43772520526906494,
+   "macro_f1": 0.41510514630331097
+  }
+ ],
+ "rounds": 150,
+ "mode": "homogeneous_fedavg",
+ "timing": {
+  "total_s": 23.08
+ },
+ "_task": {
+  "name": "plain_fedavg_Conch_v15",
+  "seed": 84,
+  "rounds": 150,
+  "worker": 1,
+  "host": "hai",
+  "wall_s": 23.11,
+  "finished": "2026-09-08T02:05:27"
+ }
+}

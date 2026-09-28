@@ -5,8 +5,10 @@ incompatible frozen pathology foundation models: an architecture-tied
 projector protocol, a 107-site TCGA testbed with four model-to-site
 assignment schemes, homogeneous controls matched in projector grouping,
 loss and head ablations, and model-heterogeneous baselines (single author:
-Yen-Jung Chiu, Chang Gung University). Per-seed aggregate results will be
-added on publication of the associated article.
+Yen-Jung Chiu, Chang Gung University). Per-seed results of every reported
+configuration are in `per_seed_results/` (see its README);
+`per_seed_results/recompute_tables.py` recomputes the reported statistics
+from them.
 
 Each site holds a *different, frozen* pathology foundation model with
 incompatible embedding dimensionality; weight-averaging federated learning
@@ -19,6 +21,7 @@ head, and class prototypes are exchanged; encoders and slides never move.
 ```
 hetfm/          protocol, baselines, runners, figure/table generators
 tools/          table and figure generators from result JSONs
+per_seed_results/  per-seed result files (CSV + raw JSON), README, recompute script
 data/           TCGA tissue-source-site partitioner (reused infrastructure)
 PREREGISTRATION.md   frozen analysis plan (timestamp inside)
 requirements.txt / LICENSE / .gitignore
@@ -55,6 +58,9 @@ scheme-level comparison at the thirty headline seeds), `run_mincount.py` /
 - `tools/make_tables_v2.py`, `tools/make_figures_v2.py`,
   `tools/fig1_overview_v2.py`   tables and figures from the batch summary;
   no hand-typed numbers
+- `tools/make_per_seed_package.py`   builds `per_seed_results/` from the raw
+  result files (the README and `recompute_tables.py` are kept in
+  `tools/per_seed_package/`)
 
 These files carry `<repo-root>`, `<analysis-dir>` and `<out-dir>`
 placeholders where the original environment had absolute paths; set them
